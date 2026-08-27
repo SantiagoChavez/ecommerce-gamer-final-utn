@@ -3,7 +3,7 @@
 /* --- FONDO GENERAL (NÍTIDO) --- */
 .admin-container {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 20px 80px 20px;
   position: relative; 
   
   /* 1. Imagen de fondo solicitada */
@@ -219,7 +219,7 @@
 
 @media (max-width: 600px) {
   .admin-container {
-    padding: 20px 10px;
+    padding: 20px 10px 60px 10px;
   }
   
   .admin-title {

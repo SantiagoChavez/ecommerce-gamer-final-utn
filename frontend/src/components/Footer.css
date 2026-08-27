@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 45px;
+  height: 40px; /* Reducido para mayor equilibrio */
   background-color: #1a1a24;
   border-top: 1.5px solid #00d2ff;
   display: flex;
@@ -19,38 +19,35 @@
 }
 
 .footer-left {
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
 }
 
 .version-tag {
   background-color: rgba(0, 210, 255, 0.15);
   border: 1px solid #00d2ff;
   color: #00d2ff;
-  padding: 1px 6px;
+  padding: 1px 8px;
   border-radius: 10px;
   font-size: 0.7rem;
-  margin-left: 5px;
   font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 210, 255, 0.3);
 }
 
 .footer-right {
   color: #00d2ff;
-  font-weight: 500;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 210, 255, 0.2);
 }
 
 /* =========================================================
-   MEDIA QUERY PARA ADAPTACIÓN MÓVIL (COMPACTO)
+   MEDIA QUERY PARA ADAPTACIÓN MÓVIL
    ========================================================= */
 
 @media (max-width: 600px) {
   .app-footer {
-    padding: 0 10px;
-    font-size: 0.75rem;
-    height: 38px;
-  }
-  
-  .version-tag {
-    display: none; /* Ocultamos versión en pantallas ultra chicas para ganar espacio */
+    padding: 0 15px;
+    font-size: 0.8rem;
+    height: 36px;
   }
 }

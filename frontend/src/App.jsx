@@ -91,13 +91,13 @@ function App() {
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             
             <Route path="/productos" element={
-               <div style={{ padding: '20px', textAlign: 'center' }}>
+               <div style={{ padding: '20px', paddingBottom: '60px', textAlign: 'center' }}>
                  <ProductoList agregarAlCarrito={agregarAlCarrito} esAdmin={false} busqueda={busqueda} />
                </div>
             } />
 
             <Route path="/carrito" element={
-               <div style={{ padding: '20px', textAlign: 'center' }}>
+               <div style={{ padding: '20px', paddingBottom: '60px', textAlign: 'center' }}>
                  <Carrito 
                     carrito={carrito} 
                     restarDelCarrito={restarDelCarrito} 
@@ -107,7 +107,7 @@ function App() {
                </div>
             } />
 
-            <Route path="/pedidos" element={<div style={{ padding: '20px' }}><Pedidos usuario={usuario} /></div>} />
+            <Route path="/pedidos" element={<div style={{ padding: '20px', paddingBottom: '60px' }}><Pedidos usuario={usuario} /></div>} />
             <Route path="/categorias" element={<Categorias />} />
             <Route path="/acerca-de" element={<AcercaDe />} />
 

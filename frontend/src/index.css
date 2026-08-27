@@ -37,5 +37,4 @@ body::before {
 
 main {
   flex: 1 0 auto;
-  padding-bottom: 60px; /* Espacio para que el footer fijo no tape el contenido */
 }
