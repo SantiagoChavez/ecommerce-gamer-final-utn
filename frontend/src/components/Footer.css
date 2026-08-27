@@ -1,78 +1,56 @@
 .app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
   background-color: #1a1a24;
-  border-top: 2px solid #00d2ff;
-  color: #cfcfcf;
-  padding: 30px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 -4px 15px rgba(0, 210, 255, 0.15);
-  margin-top: auto; /* Empuja el footer hacia abajo si el body usa flex */
-}
-
-.footer-content {
+  border-top: 1.5px solid #00d2ff;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+  box-shadow: 0 -4px 15px rgba(0, 210, 255, 0.15);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  color: #cfcfcf;
 }
 
-.footer-section {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-section h4 {
-  color: #82b1ff;
-  margin-top: 0;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-}
-
-.footer-section p {
-  font-size: 0.9rem;
-  color: #aaa;
-  margin: 6px 0;
-  line-height: 1.4;
-}
-
-.author-name {
-  color: #00d2ff !important;
+.footer-left {
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.version-badge {
+.version-tag {
   background-color: rgba(0, 210, 255, 0.15);
   border: 1px solid #00d2ff;
   color: #00d2ff;
-  padding: 2px 8px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  margin-left: 5px;
   font-weight: bold;
-  box-shadow: 0 0 5px rgba(0, 210, 255, 0.3);
+}
+
+.footer-right {
+  color: #00d2ff;
+  font-weight: 500;
 }
 
 /* =========================================================
-   MEDIA QUERY PARA ADAPTACIÓN MÓVIL
+   MEDIA QUERY PARA ADAPTACIÓN MÓVIL (COMPACTO)
    ========================================================= */
 
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 25px;
+@media (max-width: 600px) {
+  .app-footer {
+    padding: 0 10px;
+    font-size: 0.75rem;
+    height: 38px;
   }
   
-  .footer-section {
-    min-width: 100%;
-    border-bottom: 1px solid #333;
-    padding-bottom: 20px;
-  }
-  
-  .footer-section:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  .version-tag {
+    display: none; /* Ocultamos versión en pantallas ultra chicas para ganar espacio */
   }
 }
