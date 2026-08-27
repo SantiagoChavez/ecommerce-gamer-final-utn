@@ -209,7 +209,8 @@
   }
   
   .brand-text {
-    display: none;
+    display: inline;
+    font-size: 0.95rem;
   }
 }
 

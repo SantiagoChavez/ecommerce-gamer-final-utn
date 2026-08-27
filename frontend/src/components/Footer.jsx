@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="app-footer">
       <div className="footer-left">
-        <span className="version-tag">v1.1.0</span>
+        <img src="/logo-utn.png" alt="Logo UTN" className="footer-logo" />
       </div>
       <div className="footer-right">
         <span>Santiago Chavez Dev</span>

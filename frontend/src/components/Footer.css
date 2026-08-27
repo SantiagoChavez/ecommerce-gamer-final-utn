@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40px; /* Reducido para mayor equilibrio */
+  height: 40px;
   background-color: #1a1a24;
   border-top: 1.5px solid #00d2ff;
   display: flex;
@@ -23,15 +23,11 @@
   align-items: center;
 }
 
-.version-tag {
-  background-color: rgba(0, 210, 255, 0.15);
-  border: 1px solid #00d2ff;
-  color: #00d2ff;
-  padding: 1px 8px;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  box-shadow: 0 0 5px rgba(0, 210, 255, 0.3);
+.footer-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(0, 210, 255, 0.4));
 }
 
 .footer-right {
@@ -49,5 +45,9 @@
     padding: 0 15px;
     font-size: 0.8rem;
     height: 36px;
+  }
+  
+  .footer-logo {
+    height: 16px; /* Ligeramente más pequeño en celular */
   }
 }
