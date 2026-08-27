@@ -16,38 +16,20 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
 
   return (
     <nav className="navbar">
-      {/* Logo/Marca de la tienda */}
-      <div className="navbar-brand">
-        <Link to="/" onClick={() => setMenuAbierto(false)}>
-          <img src="/logo-utn.png" alt="Logo UTN" className="navbar-logo" />
-          <span className="brand-text">UTN Computer Store</span>
-        </Link>
-      </div>
-
-      {/* Botón hamburguesa para dispositivos móviles */}
-      <button className="navbar-toggle" onClick={() => setMenuAbierto(!menuAbierto)} aria-label="Menú de navegación">
-        {menuAbierto ? '✖' : '☰'}
-      </button>
-
-      {/* Menú de navegación */}
-      <ul className={`navbar-menu ${menuAbierto ? 'activo' : ''}`}>
-        {/* Siempre visible: Inicio e Información */}
-        <li onClick={() => setMenuAbierto(false)}>
-          <Link to="/">🏠 Inicio</Link>
-        </li>
-        <li onClick={() => setMenuAbierto(false)}>
-          <Link to="/acerca-de">ℹ️ Acerca de</Link>
-        </li>
+      <div className="navbar-container">
         
-        {/* --- SOLO VISIBLE SI HAY USUARIO --- */}
-        {usuario && (
-          <>
-            <li onClick={() => setMenuAbierto(false)}>
-              <Link to="/productos">📦 Catálogo</Link>
-            </li>
+        {/* Lado Izquierdo: Marca de la tienda */}
+        <div className="navbar-brand">
+          <Link to="/" onClick={() => setMenuAbierto(false)}>
+            <img src="/logo-utn.png" alt="Logo UTN" className="navbar-logo" />
+            <span className="brand-text">UTN Computer Store</span>
+          </Link>
+        </div>
 
-            {/* BARRA DE BÚSQUEDA (Solo para usuarios) */}
-            <li className="navbar-search">
+        {/* Grupo Derecho: Buscador, Enlaces principales y Hamburguesa con espaciado constante */}
+        <div className="navbar-right-group">
+          {usuario && (
+            <div className="navbar-search">
               <input 
                 type="text"
                 placeholder="🔍 Buscar producto..."
@@ -57,46 +39,80 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
                     navigate('/productos');
                 }}
               />
-            </li>
+            </div>
+          )}
+          
+          <div className="navbar-main-links">
+            <Link to="/" onClick={() => setMenuAbierto(false)}>🏠 Inicio</Link>
+            <Link to="/acerca-de" onClick={() => setMenuAbierto(false)}>ℹ️ Acerca de</Link>
+          </div>
 
-            <li onClick={() => setMenuAbierto(false)}>
-              <Link to="/carrito" className="cart-link">
-                🛒 <span className="cart-badge">{cantidadTotal}</span>
-              </Link>
-            </li>
-            
-            <li onClick={() => setMenuAbierto(false)}>
-              <Link to="/pedidos">📄 Mis Pedidos</Link>
-            </li>
-          </>
-        )}
-
-        {/* --- LADO DERECHO (LOGIN / LOGOUT) --- */}
-        {usuario ? (
-          <>
-            {usuario.rol === 'ADMIN' && (
-              <li onClick={() => setMenuAbierto(false)} className="admin-link">
-                  <Link to="/gestion" style={{ color: '#ffca28' }}>⚙️ Gestión</Link>
-              </li>
-            )}
-            
-            <li className="user-greeting">
-              <span>Hola, {usuario.username}</span>
-              <button onClick={handleSalir} className="btn-logout">
-                Salir
+          <div className="navbar-actions">
+            {usuario ? (
+              <button className="navbar-toggle" onClick={() => setMenuAbierto(!menuAbierto)} aria-label="Menú de usuario">
+                {menuAbierto ? '✖' : '☰'}
               </button>
-            </li>
+            ) : (
+              <Link to="/login" className="btn-login">
+                🔑 Iniciar Sesión
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Menú Lateral Desplegable (Drawer) para acciones del usuario */}
+        {usuario && (
+          <>
+            <div className={`navbar-drawer ${menuAbierto ? 'activo' : ''}`}>
+              <button className="drawer-close" onClick={() => setMenuAbierto(false)}>&times;</button>
+              
+              <div className="drawer-user-info">
+                <span className="user-avatar">👤</span>
+                <span className="user-greeting">Hola, {usuario.username}</span>
+              </div>
+              
+              <div className="drawer-divider"></div>
+              
+              <ul className="drawer-links">
+                <li onClick={() => setMenuAbierto(false)} className="drawer-only-mobile">
+                  <Link to="/">🏠 Inicio</Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)} className="drawer-only-mobile">
+                  <Link to="/acerca-de">ℹ️ Acerca de</Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)}>
+                  <Link to="/productos">📦 Catálogo</Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)}>
+                  <Link to="/carrito" className="cart-link-drawer">
+                    🛒 Mi Carrito <span className="cart-badge">{cantidadTotal}</span>
+                  </Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)}>
+                  <Link to="/pedidos">📄 Mis Pedidos</Link>
+                </li>
+                {usuario.rol === 'ADMIN' && (
+                  <li onClick={() => setMenuAbierto(false)} className="admin-link-drawer">
+                    <Link to="/gestion" style={{ color: '#ffca28' }}>⚙️ Panel de Gestión</Link>
+                  </li>
+                )}
+              </ul>
+              
+              <button className="btn-logout" onClick={handleSalir}>
+                Cerrar Sesión
+              </button>
+            </div>
+            
+            {/* Fondo opaco que cubre el resto de la pantalla al abrir el drawer */}
+            {menuAbierto && (
+              <div className="drawer-overlay" onClick={() => setMenuAbierto(false)}></div>
+            )}
           </>
-        ) : (
-          <li onClick={() => setMenuAbierto(false)} className="login-link">
-            <Link to="/login" className="btn-login">
-              🔑 Iniciar Sesión
-            </Link>
-          </li>
         )}
-      </ul>
+
+      </div>
     </nav>
   );
 }
 
-export default Navbar;
+export default Navbar;
