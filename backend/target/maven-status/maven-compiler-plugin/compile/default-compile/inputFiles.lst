@@ -1,16 +1,16 @@
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\repository\UsuarioRepository.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\PreentregaJavaGestionApplication.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\model\Producto.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\controller\AuthController.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\model\Usuario.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\controller\PedidoController.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\exception\StockInsuficienteException.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\model\Pedido.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\repository\ProductoRepository.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\repository\DataInitializer.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\controller\ProductoController.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\service\PedidoService.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\service\ProductoService.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\model\LineaPedido.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\WebConfig.java
-C:\TalentoTech\Trabajo-entregaFinal\backend\src\main\java\com\entregaFinal\gestion\repository\PedidoRepository.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\PedidoRepository.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\service\PedidoService.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\UsuarioRepository.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\PreentregaJavaGestionApplication.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\Producto.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\exception\StockInsuficienteException.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\Pedido.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\service\ProductoService.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\controller\AuthController.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\DataInitializer.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\controller\PedidoController.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\LineaPedido.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\controller\ProductoController.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\Usuario.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\ProductoRepository.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\WebConfig.java

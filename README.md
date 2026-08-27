@@ -1,67 +1,135 @@
-TRABAJO INTEGRADOR FINAL - E-COMMERCE FULLSTACK (UTN)
-Este proyecto es una aplicación web Fullstack de E-commerce diseñada para una Tienda de Insumos Informáticos. El sistema ofrece una solución integral que abarca desde el catálogo público y carrito de compras para clientes, hasta un panel de administración avanzado con gestión de stock, control de pedidos, facturación PDF y logística.
-Desarrollado con: Java Spring Boot, MongoDB y React (Vite).
-________________________________________
-TECNOLOGÍAS UTILIZADAS
-Backend (API REST)
-•	Java 17+ & Spring Boot 3.x: Núcleo de la aplicación.
-•	Spring Data MongoDB: Persistencia NoSQL flexible y escalable.
-•	Maven: Gestión de dependencias.
-Frontend (SPA)
-•	React 18: Librería de interfaz de usuario.
-•	Vite: Entorno de desarrollo de alto rendimiento.
-•	React Router v6: Navegación SPA con rutas protegidas y "Future Flags" activadas.
-•	jsPDF & AutoTable: Generación de facturas PDF en el cliente.
-•	CSS3 Moderno: Diseño "Dark Neon" con efectos de glassmorphism y animaciones.
-________________________________________
-FUNCIONALIDADES CLAVE
-1.	Seguridad y Roles
-o	Autenticación: Login y Registro funcional.
-o	Roles:
-	USER: Compra, carrito persistente, historial de pedidos.
-	ADMIN: Acceso exclusivo al panel de gestión (/gestion).
-o	Data Initializer: El sistema crea automáticamente usuarios de prueba al arrancar si no existen.
-2.	Experiencia de Cliente
-o	Catálogo Dinámico: Búsqueda inteligente por nombre, marca o categoría.
-o	Stock en Tiempo Real: Validación inmediata al agregar al carrito (no permite comprar más de lo disponible).
-o	Carrito Persistente: Los productos se guardan en localStorage.
-o	Mis Pedidos: Visualización del estado de las compras (Pendiente, Facturado, Despachado).
-3.	Panel de Administración (Backoffice)
-o	Gestión de Productos:
-	Alta, Baja y Modificación (CRUD).
-	Edición "In-line" (directa en la tabla) para cambios rápidos de precio/stock.
-	Modal de vista previa de imágenes con zoom.
-o	Gestión de Pedidos Avanzada:
-	Selección Múltiple: Checkboxes para seleccionar y eliminar varios pedidos a la vez.
-	Restauración de Stock: Al eliminar un pedido (individual o masivo), el stock de los productos regresa automáticamente al inventario.
-	Facturación: Generación de Facturas PDF profesionales con un clic.
-	Flujo de Estado: Ciclo completo de venta (Pendiente -> Facturar -> Despachar).
-________________________________________
-ESTRUCTURA DEL PROYECTO
-Trabajo-entregaFinal/ │ ├── backend/ # Servidor Spring Boot │ └── src/main/java/com/entregaFinal/gestion/ │ ├── controller/ # Endpoints (Auth, Pedidos, Productos) │ ├── model/ # Entidades Mongo (Documentos) │ ├── repository/ # Interfaces de acceso a datos │ ├── service/ # Lógica de negocio (Stock, Validaciones) │ └── Preentrega... # Main Application │ ├── frontend/ # Cliente React │ ├── src/ │ │ ├── components/ # Componentes (AdminPedidos, Carrito, etc.) │ │ ├── context/ # Contexto de Notificaciones Globales │ │ ├── utils/ # Generador de PDF │ │ └── App.jsx # Router y Configuración │ └── public/ # Assets (Imágenes) │ └── README.md # Documentación
-________________________________________
-INSTALACIÓN Y EJECUCIÓN
-Requisitos:
-•	Java JDK 17 o superior.
-•	Node.js (LTS).
-•	MongoDB (Corriendo en puerto 27017).
-Paso 1: Backend
-1.	Abrir terminal en la carpeta "backend".
-2.	Ejecutar: ./mvnw spring-boot:run (El servidor iniciará en http://localhost:8080)
-Paso 2: Frontend
-1.	Abrir terminal en la carpeta "frontend".
-2.	Instalar dependencias (solo la primera vez): npm install
-3.	Iniciar servidor de desarrollo: npm run dev (La web abrirá en http://localhost:5176)
-________________________________________
-USUARIOS DE PRUEBA (AUTOMÁTICOS)
-Al iniciar el backend por primera vez, el sistema creará automáticamente estos usuarios para que puedas probar todo:
-Rol: Administrador Usuario: admin Contraseña: 1234 Acceso: Panel de Gestión completo
-Rol: Cliente Usuario: cliente Contraseña: 1234 Acceso: Catálogo y Compras
-________________________________________
-ENDPOINTS PRINCIPALES
-POST /api/auth/login -> Autenticación JWT (Simulada) GET /api/productos -> Obtener catálogo POST /api/pedidos -> Generar orden de compra DELETE /api/pedidos/{id} -> Eliminar pedido y devolver stock PUT /api/pedidos/{id}/estado -> Cambiar estado (Facturación)
-________________________________________
-AUTOR
-Chavez Santiago Ezequiel 
-Institución: UTN Avellaneda
-Tecnicatura Universitaria en Programación
+<p align="center">
+  <img src="frontend/src/assets/logo.jpg" alt="Tienda de Insumos Informáticos UTN" width="600">
+</p>
+
+# Trabajo Integrador Final - E-Commerce Fullstack
+### Tienda de Insumos Informáticos - UTN Avellaneda
+
+
+Este proyecto es una aplicación web Fullstack de E-commerce diseñada para una Tienda de Insumos Informáticos. Ofrece una solución integral que abarca desde el catálogo público y carrito de compras para clientes, hasta un panel de administración avanzado (Backoffice) con gestión de stock, control de pedidos, facturación PDF y logística.
+
+Este software fue desarrollado y presentado como el **Trabajo Integrador Final** para aprobar la cursada de la **Tecnicatura Universitaria en Programación** en la **Universidad Tecnológica Nacional (UTN) Facultad Regional Avellaneda**.
+
+---
+
+## 👤 Información del Autor y Académica
+
+* **Autor:** Chavez Santiago Ezequiel
+* **Institución:** Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda
+* **Carrera:** Tecnicatura Universitaria en Programación
+* **Propósito:** Trabajo Integrador Final de Cátedra
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+### Backend (API REST)
+* ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) **Java 17+**: Lenguaje de programación base.
+* ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring&logoColor=white) **Spring Boot 3.x**: Framework principal para el backend y API REST.
+* ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **Spring Data MongoDB**: Mapeo y persistencia de datos NoSQL.
+* ![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB Atlas**: Base de datos NoSQL alojada en la nube.
+* ![Apache Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white) **Maven**: Gestión de dependencias y empaquetado del software.
+
+### Frontend (SPA)
+* ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) **React 18**: Librería declarativa para interfaces de usuario.
+* ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite**: Servidor de desarrollo y empaquetador ultrarrápido.
+* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) **React Router v6**: Enrutamiento dinámico SPA y rutas protegidas.
+* ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3 Moderno**: Estilos personalizados, diseño "Dark Neon", glassmorphism y micro-animaciones.
+* 📄 **jsPDF & AutoTable**: Generación dinámica y descarga de comprobantes en PDF.
+
+---
+
+## 🚀 Instalación y Ejecución
+
+### Requisitos Previos
+* **Java JDK 17** o superior instalado y configurado en las variables de entorno.
+* **Node.js (LTS)** instalado.
+* Conexión a Internet (para conectar a la base de datos de MongoDB Atlas en la nube).
+
+### Método de Arranque Rápido (Recomendado para Windows)
+El proyecto incluye scripts preparados para levantar automáticamente tanto la base de datos, el backend como el frontend con un solo clic:
+
+1. Haz doble clic sobre el archivo [`lanzarProyecto.vbs`](file:///c:/Users/Santiago/Proyectos%20integradores/ecommerce%20gamer/lanzarProyecto.vbs).
+2. Se abrirá un cuadro de diálogo informando el arranque y, tras unos segundos, se abrirá automáticamente tu navegador en `http://localhost:5176` con la aplicación lista para usar.
+3. *Alternativamente*, puedes ejecutar el archivo [`start_proyecto.bat`](file:///c:/Users/Santiago/Proyectos%20integradores/ecommerce%20gamer/start_proyecto.bat) en una consola.
+
+### Método Manual (Paso a Paso)
+
+#### Paso 1: Configurar y arrancar el Backend
+1. Abre una terminal en la carpeta `/backend`.
+2. Compila y ejecuta el backend con Maven:
+   ```bash
+   mvn spring-boot:run
+   ```
+   *(El backend estará escuchando en `http://localhost:8080`)*
+
+#### Paso 2: Configurar y arrancar el Frontend
+1. Abre otra terminal en la carpeta `/frontend`.
+2. Instala las dependencias necesarias (solo la primera vez):
+   ```bash
+   npm install
+   ```
+3. Ejecuta el servidor de desarrollo de Vite:
+   ```bash
+   npm run dev
+   ```
+   *(La web abrirá por defecto en `http://localhost:5176`)*
+
+---
+
+## 🔑 Usuarios de Prueba (Generados Automáticamente)
+
+Al iniciar el backend por primera vez, el sistema creará de forma automática estos usuarios en la base de datos para que puedas probar la aplicación inmediatamente:
+
+| Usuario | Contraseña | Rol / Permisos | Acceso Permitido |
+| :--- | :--- | :--- | :--- |
+| **admin** | `1234` | `ADMIN` | Catálogo de compra + Acceso exclusivo al Panel de Gestión (`/gestion`) |
+| **cliente** | `1234` | `USER` | Catálogo, añadir al carrito, realizar compras e historial de pedidos |
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+ecommerce-gamer/
+│
+├── backend/                              # Servidor Spring Boot
+│   ├── src/main/java/com/entregaFinal/gestion/
+│   │   ├── controller/                   # Endpoints (Auth, Pedidos, Productos)
+│   │   ├── model/                        # Entidades de MongoDB (Documentos)
+│   │   ├── repository/                   # Interfaces de acceso a datos (Spring Data)
+│   │   ├── service/                      # Lógica de negocio (Gestión de stock, validaciones)
+│   │   └── PreentregaJavaGestionApplication.java  # Clase principal
+│   └── src/main/resources/
+│       └── application.properties        # Configuración del servidor y base de datos Atlas
+│
+├── frontend/                             # Cliente React (SPA)
+│   ├── src/
+│   │   ├── components/                   # Componentes de UI (Admin, Pedidos, Carrito, etc.)
+│   │   ├── context/                      # Contexto global y notificaciones
+│   │   ├── utils/                        # Generador de Facturas en PDF
+│   │   └── App.jsx                       # Configuración de Router y Rutas
+│   ├── public/                           # Assets estáticos
+│   └── package.json                      # Scripts y dependencias de Node
+│
+├── lanzarProyecto.vbs                    # Lanzador invisible para Windows
+├── start_proyecto.bat                    # Script batch de arranque ordenado
+└── README.md                             # Documentación del proyecto
+```
+
+---
+
+## 📈 Changelog (Historial de Cambios)
+
+A partir de hoy, iniciamos el proceso de escalado y mejoras continuas del proyecto.
+
+### v1.1.0 - Agosto 2026 (Estado Actual)
+* **Migración a la Nube (MongoDB Atlas):** Se eliminó la dependencia de MongoDB local. Ahora el proyecto se conecta automáticamente a un cluster de MongoDB Atlas (M0 Free Tier) persistente y disponible 24/7.
+* **Portabilidad de Scripts de Arranque:** Se refactorizaron `start_proyecto.bat` y `lanzarProyecto.vbs` para utilizar rutas de ejecución dinámicas relativas. Ahora el proyecto corre en cualquier carpeta sin requerir configuración manual previa de paths.
+* **Resolución de Conflictos de Entorno:** Se implementó una lógica de detección inteligente en `start_proyecto.bat` para evitar conflictos con archivos marcadores vacíos en la ruta de System32 y priorizar la ejecución del binario real de Maven.
+* **Actualización del README:** Reescrito por completo en formato Markdown estructurado y profesional con la información académica y del autor.
+
+### Próximas Mejoras Planificadas (Roadmap)
+* [ ] **Fase 2 (Responsive Layout):** Rediseñar Navbar, catálogo, carrito y el backoffice administrativo utilizando Media Queries para lograr adaptabilidad total en celulares, tablets y escritorio.
+* [ ] **Fase 3 (Seguridad JWT):** Reemplazar la autenticación simulada actual por una implementación real con JSON Web Tokens (JWT) firmados en el backend.
+* [ ] **Fase 4 (Notificaciones y UX):** Incorporar animaciones e interactividad avanzada y pulir la experiencia del usuario (notificaciones flotantes, alertas animadas).
