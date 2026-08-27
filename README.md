@@ -75,6 +75,14 @@ El proyecto incluye scripts preparados para levantar automáticamente tanto la b
    ```
    *(La web abrirá por defecto en `http://localhost:5176`)*
 
+#### Paso 3: Ejecutar la Suite de Pruebas Unitarias (Vitest)
+1. Abre una terminal en la carpeta `/frontend`.
+2. Ejecuta el comando de pruebas:
+   ```bash
+   npm run test
+   ```
+   *(Correrá las 13 pruebas unitarias y de integración de Vitest validando la UX y casos borde)*
+
 ---
 
 ## 🔑 Usuarios de Prueba (Generados Automáticamente)
@@ -99,18 +107,21 @@ ecommerce-gamer/
 │   │   ├── model/                        # Entidades de MongoDB (Documentos)
 │   │   ├── repository/                   # Interfaces de acceso a datos (Spring Data)
 │   │   ├── service/                      # Lógica de negocio (Gestión de stock, validaciones)
+│   │   ├── config/                       # Configuración y semillado inicial (CORS, DataInitializer)
 │   │   └── PreentregaJavaGestionApplication.java  # Clase principal
 │   └── src/main/resources/
 │       └── application.properties        # Configuración del servidor y base de datos Atlas
 │
 ├── frontend/                             # Cliente React (SPA)
 │   ├── src/
-│   │   ├── components/                   # Componentes de UI (Admin, Pedidos, Carrito, etc.)
-│   │   ├── context/                      # Contexto global y notificaciones
+│   │   ├── components/                   # Componentes reutilizables de UI (Navbar, Footer, etc.)
+│   │   ├── views/                        # Vistas y páginas de pantalla completa (Inicio, Carrito, etc.)
+│   │   ├── context/                      # Contexto global y de temas (ThemeContext, NotificationContext)
 │   │   ├── utils/                        # Generador de Facturas en PDF
+│   │   ├── setupTests.js                 # Configuración de Vitest para JSDOM
 │   │   └── App.jsx                       # Configuración de Router y Rutas
 │   ├── public/                           # Assets estáticos
-│   └── package.json                      # Scripts y dependencias de Node
+│   └── package.json                      # Scripts, dependencias de Node y Vitest
 │
 ├── lanzarProyecto.vbs                    # Lanzador invisible para Windows
 ├── start_proyecto.bat                    # Script batch de arranque ordenado

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { generarFacturaPDF } from '../utils/facturaPDF'; 
+import { generarFacturaPDF } from '../../utils/facturaPDF'; 
 
 function AdminPedidos() {
   const [pedidos, setPedidos] = useState([]);
