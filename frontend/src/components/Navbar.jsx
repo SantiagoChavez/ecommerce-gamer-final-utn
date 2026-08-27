@@ -1,30 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
   const navigate = useNavigate();
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
   const handleSalir = () => {
     onLogout();
     navigate('/');
+    setMenuAbierto(false);
   };
 
   const cantidadTotal = carrito ? carrito.reduce((acc, item) => acc + item.cantidad, 0) : 0;
 
   return (
     <nav className="navbar">
-      <ul>
+      {/* Logo/Marca de la tienda */}
+      <div className="navbar-brand">
+        <Link to="/" onClick={() => setMenuAbierto(false)}>
+          🎮 <span className="brand-text">UTN Computer Store</span>
+        </Link>
+      </div>
+
+      {/* Botón hamburguesa para dispositivos móviles */}
+      <button className="navbar-toggle" onClick={() => setMenuAbierto(!menuAbierto)} aria-label="Menú de navegación">
+        {menuAbierto ? '✖' : '☰'}
+      </button>
+
+      {/* Menú de navegación */}
+      <ul className={`navbar-menu ${menuAbierto ? 'activo' : ''}`}>
         {/* Siempre visible: Inicio */}
-        <li><Link to="/">🏠 Inicio</Link></li>
+        <li onClick={() => setMenuAbierto(false)}>
+          <Link to="/">🏠 Inicio</Link>
+        </li>
         
         {/* --- SOLO VISIBLE SI HAY USUARIO --- */}
         {usuario && (
           <>
-            <li><Link to="/productos">📦 Catálogo</Link></li>
+            <li onClick={() => setMenuAbierto(false)}>
+              <Link to="/productos">📦 Catálogo</Link>
+            </li>
 
             {/* BARRA DE BÚSQUEDA (Solo para usuarios) */}
-            <li style={{ flexGrow: 1, margin: '0 20px', maxWidth: '400px' }}>
+            <li className="navbar-search">
               <input 
                 type="text"
                 placeholder="🔍 Buscar producto..."
@@ -33,23 +52,18 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
                     setBusqueda(e.target.value);
                     navigate('/productos');
                 }}
-                style={{
-                    width: '100%',
-                    padding: '8px',
-                    borderRadius: '20px',
-                    border: 'none',
-                    outline: 'none'
-                }}
               />
             </li>
 
-            <li>
-              <Link to="/carrito" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <li onClick={() => setMenuAbierto(false)}>
+              <Link to="/carrito" className="cart-link">
                 🛒 <span className="cart-badge">{cantidadTotal}</span>
               </Link>
             </li>
             
-            <li><Link to="/pedidos">📄 Mis Pedidos</Link></li>
+            <li onClick={() => setMenuAbierto(false)}>
+              <Link to="/pedidos">📄 Mis Pedidos</Link>
+            </li>
           </>
         )}
 
@@ -57,21 +71,21 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
         {usuario ? (
           <>
             {usuario.rol === 'ADMIN' && (
-              <li style={{ marginLeft: '20px', borderLeft:'1px solid #555', paddingLeft:'20px' }}>
+              <li onClick={() => setMenuAbierto(false)} className="admin-link">
                   <Link to="/gestion" style={{ color: '#ffca28' }}>⚙️ Gestión</Link>
               </li>
             )}
             
-            <li style={{ marginLeft: 'auto' }}>
-              <span style={{ color: 'white', marginRight: '10px' }}>Hola, {usuario.username}</span>
-              <button onClick={handleSalir} style={{ background: 'transparent', border: '1px solid white', color: 'white', cursor: 'pointer', padding:'2px 8px', borderRadius:'4px' }}>
+            <li className="user-greeting">
+              <span>Hola, {usuario.username}</span>
+              <button onClick={handleSalir} className="btn-logout">
                 Salir
               </button>
             </li>
           </>
         ) : (
-          <li style={{ marginLeft: 'auto' }}>
-            <Link to="/login" style={{ backgroundColor: '#007bff', padding: '5px 10px', borderRadius: '4px', color: 'white', textDecoration: 'none' }}>
+          <li onClick={() => setMenuAbierto(false)} className="login-link">
+            <Link to="/login" className="btn-login">
               🔑 Iniciar Sesión
             </Link>
           </li>
@@ -81,4 +95,4 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
   );
 }
 
-export default Navbar;
+export default Navbar;

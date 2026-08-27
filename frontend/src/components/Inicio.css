@@ -174,3 +174,44 @@ button {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* =========================================================
+   MEDIA QUERY PARA INICIO EN MÓVILES
+   ========================================================= */
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 30px 15px;
+    margin: 15px;
+    border-radius: 15px;
+  }
+  
+  .logo-container img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+  }
+  
+  .titulo-principal {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  
+  .subtitulo {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+  
+  .botones-accion {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .botones-accion button {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    padding: 12px 20px;
+  }
+}
