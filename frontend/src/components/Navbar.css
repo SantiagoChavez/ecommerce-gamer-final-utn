@@ -152,22 +152,126 @@
   transform: scale(1.1);
 }
 
-/* Botón Switch de Tema */
-.btn-theme-toggle {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
+/* Contenedor del switch de tema */
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
-  outline: none;
-  transition: transform 0.2s;
-  padding: 4px;
+  user-select: none;
+}
+
+.theme-switch-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  transition: color 0.3s;
+}
+
+/* Switch base slider */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, 0.15);
+  border: 1px solid var(--card-border);
+  border-radius: 34px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.theme-slider-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 16px;
+  width: 16px;
+  background-color: var(--neon-color);
+  box-shadow: 0 0 5px var(--neon-shadow);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0px);
 }
 
-.btn-theme-toggle:hover {
-  transform: scale(1.25);
+/* Cuando está en modo claro (input checked) */
+.theme-switch input:checked + .theme-slider .theme-slider-icon {
+  transform: translateX(22px);
+}
+
+.theme-switch:hover .theme-slider {
+  border-color: var(--neon-color);
+  box-shadow: 0 0 5px var(--neon-shadow);
+}
+
+/* Estilos para el switch de tema en el Drawer */
+.drawer-theme-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  background: rgba(128, 128, 128, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+}
+
+.drawer-theme-text {
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.drawer-theme-text strong {
+  color: var(--neon-color);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.drawer-theme-toggle-btn {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-color);
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.drawer-theme-toggle-btn:hover {
+  border-color: var(--neon-color);
+  color: var(--neon-color);
+  box-shadow: 0 0 8px var(--neon-shadow);
 }
 
 /* =========================================================

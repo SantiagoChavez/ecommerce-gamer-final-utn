@@ -30,9 +30,22 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
 
         {/* Grupo Derecho: Buscador, Enlaces principales y Hamburguesa con espaciado constante */}
         <div className="navbar-right-group">
-          <button onClick={toggleTema} className="btn-theme-toggle" aria-label="Cambiar Tema" title="Cambiar Tema">
-            {tema === 'dark' ? '☀️' : '🌙'}
-          </button>
+          {/* Switch de Tema Descriptivo y Sutil */}
+          <div className="theme-switch-container" title={`Cambiar a modo ${tema === 'dark' ? 'claro' : 'oscuro'}`}>
+            <span className="theme-switch-label">{tema === 'dark' ? 'Oscuro' : 'Claro'}</span>
+            <label className="theme-switch">
+              <input 
+                type="checkbox" 
+                checked={tema === 'light'} 
+                onChange={toggleTema}
+              />
+              <span className="theme-slider">
+                <span className="theme-slider-icon">
+                  {tema === 'dark' ? '🌙' : '☀️'}
+                </span>
+              </span>
+            </label>
+          </div>
           
           {usuario && (
             <div className="navbar-search">
@@ -78,6 +91,14 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
               </div>
               
               <div className="drawer-divider"></div>
+              
+              {/* Sección de Tema en el Drawer */}
+              <div className="drawer-theme-section">
+                <span className="drawer-theme-text">Apariencia: <strong>{tema === 'dark' ? 'Oscuro' : 'Claro'}</strong></span>
+                <button onClick={toggleTema} className="drawer-theme-toggle-btn">
+                  {tema === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
+                </button>
+              </div>
               
               <ul className="drawer-links">
                 <li onClick={() => setMenuAbierto(false)} className="drawer-only-mobile">
