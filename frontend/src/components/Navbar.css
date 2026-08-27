@@ -2,13 +2,14 @@
    BARRA DE NAVEGACIÓN (NAVBAR)
    ========================================================= */
 .navbar {
-  background-color: #1a1a24;
-  border-bottom: 2px solid #00d2ff;
+  background-color: var(--navbar-bg);
+  border-bottom: 2px solid var(--navbar-border);
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.15);
+  box-shadow: 0 4px 15px var(--neon-shadow);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 /* Contenedor alineado al centro de la pantalla */
@@ -22,6 +23,7 @@
   box-sizing: border-box;
 }
 
+/* Marca de la tienda */
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -30,12 +32,13 @@
 .navbar-brand a {
   font-size: 1.2rem;
   font-weight: 800;
-  color: white;
-  text-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+  color: var(--text-title);
+  text-shadow: 0 0 8px var(--neon-shadow);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: color 0.3s;
 }
 
 .navbar-logo {
@@ -44,6 +47,10 @@
   width: auto;
   object-fit: contain;
   border-radius: 2px;
+}
+
+.navbar-brand a:hover {
+  opacity: 0.9;
 }
 
 /* Grupo derecho flex con espaciado constante alineado a la hamburguesa */
@@ -63,7 +70,7 @@
 }
 
 .navbar-main-links a {
-  color: #cfcfcf;
+  color: var(--text-color);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -74,7 +81,11 @@
 
 .navbar-main-links a:hover {
   background-color: rgba(255, 255, 255, 0.05);
-  color: #00d2ff;
+  color: var(--neon-color);
+}
+
+:root.light-mode .navbar-main-links a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 /* Buscador en la barra principal */
@@ -87,17 +98,17 @@
   width: 100%;
   padding: 6px 12px;
   border-radius: 20px;
-  border: 1px solid #444;
-  background-color: #111;
-  color: white;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--input-text);
   outline: none;
   font-size: 0.85rem;
   transition: all 0.3s;
 }
 
 .navbar-search input:focus {
-  border-color: #00d2ff;
-  box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+  border-color: var(--neon-color);
+  box-shadow: 0 0 8px var(--neon-shadow);
 }
 
 /* Lado Derecho: Acciones (Toggle hamburguesa o Iniciar Sesión) */
@@ -107,7 +118,7 @@
 }
 
 .btn-login {
-  background-color: #007bff;
+  background-color: var(--accent-color);
   padding: 6px 15px;
   border-radius: 20px;
   color: white;
@@ -118,19 +129,19 @@
 }
 
 .btn-login:hover {
-  background-color: #0056b3;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+  background-color: var(--accent-hover);
+  box-shadow: 0 0 10px var(--neon-shadow);
 }
 
 /* Botón Hamburguesa */
 .navbar-toggle {
   background: transparent;
   border: none;
-  color: #00d2ff;
+  color: var(--neon-color);
   font-size: 1.6rem;
   cursor: pointer;
   outline: none;
-  transition: transform 0.2s;
+  transition: transform 0.2s, color 0.3s;
   padding: 4px;
   display: flex;
   align-items: center;
@@ -141,28 +152,46 @@
   transform: scale(1.1);
 }
 
+/* Botón Switch de Tema */
+.btn-theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-theme-toggle:hover {
+  transform: scale(1.25);
+}
+
 /* =========================================================
    MENÚ LATERAL DESPLEGABLE (DRAWER)
    ========================================================= */
 .navbar-drawer {
   position: fixed;
   top: 0;
-  right: -300px; /* Escondido por defecto a la derecha */
+  right: -300px;
   width: 280px;
   height: 100vh;
-  background-color: #1a1a24;
-  border-left: 2px solid #00d2ff;
+  background-color: var(--navbar-bg);
+  border-left: 2px solid var(--navbar-border);
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
   z-index: 2000;
   display: flex;
   flex-direction: column;
   padding: 30px 20px;
   box-sizing: border-box;
-  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, border-color 0.3s;
 }
 
 .navbar-drawer.activo {
-  right: 0; /* Desliza hacia adentro */
+  right: 0;
 }
 
 /* Botón cerrar del Drawer */
@@ -196,12 +225,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid #00d2ff;
+  border: 1px solid var(--neon-color);
 }
 
 .user-greeting {
   font-weight: 600;
-  color: white;
+  color: var(--text-title);
   font-size: 1rem;
 }
 
@@ -209,6 +238,10 @@
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
   margin-bottom: 25px;
+}
+
+:root.light-mode .drawer-divider {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* Lista de enlaces en el Drawer */
@@ -222,7 +255,7 @@
 }
 
 .drawer-links li a {
-  color: #cfcfcf;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 1.05rem;
   font-weight: 600;
@@ -236,7 +269,11 @@
 
 .drawer-links li a:hover {
   background-color: rgba(0, 210, 255, 0.05);
-  color: #00d2ff;
+  color: var(--neon-color);
+}
+
+:root.light-mode .drawer-links li a:hover {
+  background-color: rgba(0, 123, 255, 0.05);
 }
 
 .cart-link-drawer {
@@ -257,7 +294,7 @@
 
 /* Botón de Cerrar Sesión en el Drawer */
 .btn-logout {
-  margin-top: auto; /* Lo empuja al fondo del drawer */
+  margin-top: auto;
   background-color: rgba(255, 82, 82, 0.1);
   border: 1px solid #ff5252;
   color: #ff5252;
@@ -296,14 +333,14 @@
    ========================================================= */
 @media (max-width: 600px) {
   .brand-text {
-    font-size: 0.95rem; /* Asegurar que quepa en el Galaxy S8 */
+    font-size: 0.95rem;
   }
   
   .navbar-main-links {
-    display: none; /* En celular colapsamos todo al Drawer (incluido Inicio/Acerca de) */
+    display: none;
   }
   
   .drawer-only-mobile {
-    display: block !important; /* Mostrar en celulares dentro del drawer */
+    display: block !important;
   }
 }

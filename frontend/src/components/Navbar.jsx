@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 
 function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
   const navigate = useNavigate();
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const { tema, toggleTema } = useTheme();
 
   const handleSalir = () => {
     onLogout();
@@ -28,6 +30,10 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
 
         {/* Grupo Derecho: Buscador, Enlaces principales y Hamburguesa con espaciado constante */}
         <div className="navbar-right-group">
+          <button onClick={toggleTema} className="btn-theme-toggle" aria-label="Cambiar Tema" title="Cambiar Tema">
+            {tema === 'dark' ? '☀️' : '🌙'}
+          </button>
+          
           {usuario && (
             <div className="navbar-search">
               <input 
