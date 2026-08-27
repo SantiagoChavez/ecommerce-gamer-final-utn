@@ -119,17 +119,6 @@ ecommerce-gamer/
 
 ---
 
-## 📈 Changelog (Historial de Cambios)
+## 📈 Historial de Cambios (Changelog)
 
-A partir de hoy, iniciamos el proceso de escalado y mejoras continuas del proyecto.
-
-### v1.1.0 - Agosto 2026 (Estado Actual)
-* **Migración a la Nube (MongoDB Atlas):** Se eliminó la dependencia de MongoDB local. Ahora el proyecto se conecta automáticamente a un cluster de MongoDB Atlas (M0 Free Tier) persistente y disponible 24/7.
-* **Portabilidad de Scripts de Arranque:** Se refactorizaron `start_proyecto.bat` y `lanzarProyecto.vbs` para utilizar rutas de ejecución dinámicas relativas. Ahora el proyecto corre en cualquier carpeta sin requerir configuración manual previa de paths.
-* **Resolución de Conflictos de Entorno:** Se implementó una lógica de detección inteligente en `start_proyecto.bat` para evitar conflictos con archivos marcadores vacíos en la ruta de System32 y priorizar la ejecución del binario real de Maven.
-* **Actualización del README:** Reescrito por completo en formato Markdown estructurado y profesional con la información académica y del autor.
-
-### Próximas Mejoras Planificadas (Roadmap)
-* [ ] **Fase 2 (Responsive Layout):** Rediseñar Navbar, catálogo, carrito y el backoffice administrativo utilizando Media Queries para lograr adaptabilidad total en celulares, tablets y escritorio.
-* [ ] **Fase 3 (Seguridad JWT):** Reemplazar la autenticación simulada actual por una implementación real con JSON Web Tokens (JWT) firmados en el backend.
-* [ ] **Fase 4 (Notificaciones y UX):** Incorporar animaciones e interactividad avanzada y pulir la experiencia del usuario (notificaciones flotantes, alertas animadas).
+El registro detallado de las versiones, cambios aplicados y el roadmap de desarrollo continuo se encuentra documentado por separado en el archivo [changelog.md](changelog.md).

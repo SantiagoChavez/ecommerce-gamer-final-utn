@@ -1,0 +1,78 @@
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--navbar-bg);
+  border-top: 1.5px solid var(--navbar-border);
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 990;
+  box-shadow: 0 -4px 15px var(--neon-shadow);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.footer-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo {
+  display: block;
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px var(--neon-shadow));
+  transition: filter 0.3s;
+}
+
+.version-tag {
+  background-color: rgba(128, 128, 128, 0.15);
+  border: 1px solid var(--neon-color);
+  color: var(--neon-color);
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  box-shadow: 0 0 5px var(--neon-shadow);
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.footer-right {
+  color: var(--neon-color);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--neon-shadow);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* =========================================================
+   MEDIA QUERY PARA ADAPTACIÓN MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .app-footer {
+    padding: 0 15px;
+    font-size: 0.8rem;
+    height: 36px;
+  }
+  
+  .footer-logo {
+    height: 16px;
+  }
+}

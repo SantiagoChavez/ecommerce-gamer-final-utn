@@ -1,0 +1,208 @@
+.acercade-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px 80px 20px;
+}
+
+.acercade-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--card-shadow);
+  color: var(--text-color);
+  text-align: left;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.acercade-title {
+  color: var(--neon-color);
+  font-size: 2.2rem;
+  margin: 0;
+  text-shadow: 0 0 10px var(--neon-shadow);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.acercade-subtitle {
+  color: var(--neon-color);
+  font-size: 1.1rem;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.acercade-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-color), transparent);
+  margin-bottom: 30px;
+  transition: background 0.3s;
+}
+
+.acercade-section {
+  margin-bottom: 35px;
+}
+
+.acercade-section h3 {
+  color: var(--text-title);
+  font-size: 1.3rem;
+  border-left: 3px solid var(--neon-color);
+  padding-left: 10px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.acercade-section p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  opacity: 0.85;
+  transition: color 0.3s;
+}
+
+/* Developer Profile */
+.developer-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(128, 128, 128, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  transition: border-color 0.3s;
+}
+
+.dev-avatar {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--neon-color), var(--accent-hover));
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--neon-shadow);
+  transition: box-shadow 0.3s;
+}
+
+.dev-info h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-title);
+  transition: color 0.3s;
+}
+
+.dev-title {
+  color: var(--neon-color) !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 2px 0 8px 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.dev-bio {
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5;
+}
+
+/* Tech Grid */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.tech-item {
+  background-color: rgba(128, 128, 128, 0.03);
+  border: 1px solid var(--card-border);
+  padding: 15px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.tech-item:hover {
+  background-color: rgba(128, 128, 128, 0.08);
+  border-color: var(--neon-color);
+  transform: translateY(-2px);
+}
+
+.tech-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tech-item strong {
+  color: var(--text-title);
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.tech-item p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Features List */
+.features-list ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.features-list li {
+  line-height: 1.8;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  opacity: 0.85;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.features-list strong {
+  color: var(--text-title);
+  transition: color 0.3s;
+}
+
+/* =========================================================
+   MEDIA QUERY PARA ADAPTACIÓN MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .acercade-container {
+    padding: 20px 10px 60px 10px;
+  }
+  
+  .acercade-card {
+    padding: 20px 15px;
+  }
+  
+  .acercade-title {
+    font-size: 1.6rem;
+  }
+  
+  .acercade-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .developer-profile {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,18 +3,17 @@
 /* --- FONDO GENERAL (NÍTIDO) --- */
 .admin-container {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 20px 80px 20px;
   position: relative; 
-  
-  /* 1. Imagen de fondo solicitada */
-  background-image: url('/inicio-bg.jpg'); 
+  background-image: var(--bg-image); 
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
-  color: #c0c0d0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* 2. Capa oscura para leer el texto (SIN DESENFOQUE) */
@@ -22,13 +21,9 @@
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  
-  /* Oscurecemos la imagen al 85% para que resalten los formularios */
-  background-color: rgba(10, 10, 20, 0.85); 
-  
-  /* SIN backdrop-filter: blur(...) */
-  
+  background-color: var(--bg-overlay); 
   z-index: 0; 
+  transition: background-color 0.3s;
 }
 
 /* 3. Contenido por encima del fondo */
@@ -39,34 +34,38 @@
 
 /* --- TÍTULOS --- */
 .admin-title {
-  color: #82b1ff;
+  color: var(--neon-color);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 30px;
   text-align: center;
   font-size: 2.2rem;
   font-weight: 600;
+  text-shadow: 0 0 10px var(--neon-shadow);
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 .section-title {
-  color: #e0e0e0;
-  border-bottom: 2px solid #3f51b5;
+  color: var(--text-title);
+  border-bottom: 2px solid var(--neon-color);
   display: inline-block;
   padding-bottom: 5px;
   margin-bottom: 25px;
   font-size: 1.4rem;
+  transition: color 0.3s, border-color 0.3s;
 }
 
 /* --- TARJETAS --- */
 .admin-card {
-  background: #23232e; 
-  border: 1px solid #444;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background: var(--card-bg); 
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   border-radius: 12px;
   padding: 40px;
   margin: 0 auto 40px auto;
   max-width: 800px;
   text-align: center;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 /* --- FORMULARIOS --- */
@@ -78,19 +77,20 @@
   margin: 0 auto;
 }
 
-.admin-form input {
-  background-color: #2b2b36;
-  border: 1px solid #444;
-  color: #eee;
+.admin-form input, .admin-form select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
   padding: 12px;
   border-radius: 6px;
   outline: none;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 
-.admin-form input:focus {
-  border-color: #82b1ff;
+.admin-form input:focus, .admin-form select:focus {
+  border-color: var(--neon-color);
+  box-shadow: 0 0 8px var(--neon-shadow);
 }
 
 .admin-form input::placeholder {
@@ -99,7 +99,7 @@
 
 /* --- BOTÓN DE ENVÍO --- */
 .btn-admin-submit {
-  background-color: #3f51b5;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 12px;
@@ -109,11 +109,12 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 10px;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .btn-admin-submit:hover {
-  background-color: #5c6bc0;
+  background-color: var(--accent-hover);
+  box-shadow: 0 0 10px var(--neon-shadow);
 }
 
 /* --- NOTIFICACIÓN FLOTANTE --- */
@@ -122,18 +123,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(30, 30, 40, 0.95);
-  color: #00d2ff;
-  border: 1px solid #00d2ff;
+  background-color: var(--card-bg);
+  color: var(--neon-color);
+  border: 1.5px solid var(--neon-color);
   padding: 20px 40px;
   border-radius: 50px;   
   font-family: 'Segoe UI', sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
   text-align: center;
-  box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+  box-shadow: 0 0 30px var(--neon-shadow);
   z-index: 9999;
   animation: aparecerCentro 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 @keyframes aparecerCentro {
@@ -154,7 +156,7 @@
 }
 
 .modal-neon {
-  background-color: #1a1a24;
+  background-color: var(--card-bg);
   border: 1px solid #ff5252;
   box-shadow: 0 0 20px rgba(255, 82, 82, 0.2);
   padding: 30px;
@@ -162,6 +164,7 @@
   width: 400px;
   text-align: center;
   animation: aparecerSuave 0.2s ease-out;
+  transition: background-color 0.3s;
 }
 
 .modal-neon h3 {
@@ -172,9 +175,10 @@
 }
 
 .modal-neon p {
-  color: #ccc;
+  color: var(--text-color);
   font-size: 1rem;
   margin-bottom: 25px;
+  transition: color 0.3s;
 }
 
 .modal-botones {
@@ -185,12 +189,21 @@
 
 .btn-cancelar {
   background: transparent;
-  border: 1px solid #555;
-  color: #ccc;
+  border: 1px solid var(--input-border);
+  color: var(--text-color);
   padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-cancelar:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+:root.light-mode .btn-cancelar:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .btn-confirmar-rojo {
@@ -208,4 +221,45 @@
   background: #ff5252;
   color: white;
   box-shadow: 0 0 15px rgba(255, 82, 82, 0.5);
+}
+
+/* --- ESTILOS DE FORMULARIO DE ALTA Y RESPONSIVE --- */
+.admin-form-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .admin-container {
+    padding: 20px 10px 60px 10px;
+  }
+  
+  .admin-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .admin-card {
+    padding: 25px 15px;
+    margin-bottom: 25px;
+  }
+  
+  .admin-form {
+    gap: 15px;
+  }
+  
+  .admin-form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .admin-form-row input {
+    width: 100% !important;
+  }
+  
+  .admin-form input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
 }

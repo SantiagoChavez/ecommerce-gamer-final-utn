@@ -1,39 +1,450 @@
+/* =========================================================
+   BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================================= */
 .navbar {
-  background-color: #333;
-  padding: 10px 0;
+  background-color: var(--navbar-bg);
+  border-bottom: 2px solid var(--navbar-border);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px var(--neon-shadow);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
-.navbar ul {
-  list-style: none;
+/* Contenedor alineado al centro de la pantalla */
+.navbar-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;
 }
 
-.navbar li a {
+/* Marca de la tienda */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand a {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-title);
+  text-shadow: 0 0 8px var(--neon-shadow);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+}
+
+.navbar-logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.navbar-brand a:hover {
+  opacity: 0.9;
+}
+
+/* Grupo derecho flex con espaciado constante alineado a la hamburguesa */
+.navbar-right-group {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Mismo aire entre todos los elementos */
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+/* Enlaces principales (Inicio, Acerca de) */
+.navbar-main-links {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Mismo aire */
+}
+
+.navbar-main-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.navbar-main-links a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--neon-color);
+}
+
+:root.light-mode .navbar-main-links a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Buscador en la barra principal */
+.navbar-search {
+  max-width: 200px;
+  width: 100%;
+}
+
+.navbar-search input {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  outline: none;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.navbar-search input:focus {
+  border-color: var(--neon-color);
+  box-shadow: 0 0 8px var(--neon-shadow);
+}
+
+/* Lado Derecho: Acciones (Toggle hamburguesa o Iniciar Sesión) */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-login {
+  background-color: var(--accent-color);
+  padding: 6px 15px;
+  border-radius: 20px;
   color: white;
   text-decoration: none;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 10px;
-  transition: background-color 0.3s ease;
+  font-size: 0.85rem;
+  transition: all 0.3s;
 }
 
-.navbar li a:hover {
-  background-color: #444;
-  border-radius: 5px;
+.btn-login:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 0 10px var(--neon-shadow);
 }
-.cart-badge {
-  background-color: #ff4444;
-  color: white;
+
+/* Botón Hamburguesa */
+.navbar-toggle {
+  background: transparent;
+  border: none;
+  color: var(--neon-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s, color 0.3s;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Contenedor del switch de tema */
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme-switch-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  transition: color 0.3s;
+}
+
+/* Switch base slider */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, 0.15);
+  border: 1px solid var(--card-border);
+  border-radius: 34px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.theme-slider-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+  background-color: var(--neon-color);
+  box-shadow: 0 0 5px var(--neon-shadow);
   border-radius: 50%;
-  padding: 2px 6px;
+  font-size: 0.65rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0px);
+}
+
+/* Cuando está en modo claro (input checked) */
+.theme-switch input:checked + .theme-slider .theme-slider-icon {
+  transform: translateX(22px);
+}
+
+.theme-switch:hover .theme-slider {
+  border-color: var(--neon-color);
+  box-shadow: 0 0 5px var(--neon-shadow);
+}
+
+/* Estilos para el switch de tema en el Drawer */
+.drawer-theme-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  background: rgba(128, 128, 128, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+}
+
+.drawer-theme-text {
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.drawer-theme-text strong {
+  color: var(--neon-color);
+  text-transform: uppercase;
   font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.drawer-theme-toggle-btn {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-color);
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.drawer-theme-toggle-btn:hover {
+  border-color: var(--neon-color);
+  color: var(--neon-color);
+  box-shadow: 0 0 8px var(--neon-shadow);
+}
+
+/* =========================================================
+   MENÚ LATERAL DESPLEGABLE (DRAWER)
+   ========================================================= */
+.navbar-drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100vh;
+  background-color: var(--navbar-bg);
+  border-left: 2px solid var(--navbar-border);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s, border-color 0.3s;
+}
+
+.navbar-drawer.activo {
+  right: 0;
+}
+
+/* Botón cerrar del Drawer */
+.drawer-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #ff5252;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Información del Usuario en el Drawer */
+.drawer-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.user-avatar {
+  font-size: 1.8rem;
+  background: rgba(0, 210, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--neon-color);
+}
+
+.user-greeting {
+  font-weight: 600;
+  color: var(--text-title);
+  font-size: 1rem;
+}
+
+.drawer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 25px;
+}
+
+:root.light-mode .drawer-divider {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de enlaces en el Drawer */
+.drawer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.drawer-links li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.drawer-links li a:hover {
+  background-color: rgba(0, 210, 255, 0.05);
+  color: var(--neon-color);
+}
+
+:root.light-mode .drawer-links li a:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+.cart-link-drawer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-badge {
+  background-color: #ff5252;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
   font-weight: bold;
-  min-width: 15px;
-  text-align: center;
+  box-shadow: 0 0 8px rgba(255, 82, 82, 0.5);
+}
+
+/* Botón de Cerrar Sesión en el Drawer */
+.btn-logout {
+  margin-top: auto;
+  background-color: rgba(255, 82, 82, 0.1);
+  border: 1px solid #ff5252;
+  color: #ff5252;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #ff5252;
+  color: white;
+  box-shadow: 0 0 12px rgba(255, 82, 82, 0.4);
+}
+
+/* Overlay Backdrop */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1500;
+}
+
+/* Ocultar enlaces de inicio/acerca de en el drawer por defecto (escritorio) */
+.drawer-only-mobile {
+  display: none !important;
+}
+
+/* =========================================================
+   MEDIA QUERY PARA ADAPTACIÓN MÓVIL
+   ========================================================= */
+@media (max-width: 600px) {
+  .brand-text {
+    font-size: 0.95rem;
+  }
+  
+  .navbar-main-links {
+    display: none;
+  }
+  
+  .drawer-only-mobile {
+    display: block !important;
+  }
 }

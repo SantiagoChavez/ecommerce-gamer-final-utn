@@ -12,7 +12,7 @@ function Inicio({ usuario }) {
 
       <div className="hero-section">
         <div className="logo-container">
-           <img src="/logo.jpg" alt="Logo Tienda Gamer" />
+            <img src="/logo-utn.png" alt="Logo UTN Computer Store" />
         </div>
         <h1 className="titulo-principal">Tienda de Insumos Informáticos</h1>
         <p className="subtitulo">

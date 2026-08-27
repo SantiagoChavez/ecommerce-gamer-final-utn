@@ -12,6 +12,8 @@ import Inicio from './components/Inicio';
 import Categorias from './components/Categorias';
 import Login from './components/Login';
 import AdminPedidos from './components/AdminPedidos'; 
+import Footer from './components/Footer'; // Importar el Footer
+import AcercaDe from './components/AcercaDe'; // Importar AcercaDe
 import './components/Admin.css'; 
 
 const RutaPrivadaAdmin = ({ usuario, children }) => {
@@ -89,13 +91,13 @@ function App() {
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             
             <Route path="/productos" element={
-               <div style={{ padding: '20px', textAlign: 'center' }}>
+               <div style={{ padding: '20px', paddingBottom: '60px', textAlign: 'center' }}>
                  <ProductoList agregarAlCarrito={agregarAlCarrito} esAdmin={false} busqueda={busqueda} />
                </div>
             } />
 
             <Route path="/carrito" element={
-               <div style={{ padding: '20px', textAlign: 'center' }}>
+               <div style={{ padding: '20px', paddingBottom: '60px', textAlign: 'center' }}>
                  <Carrito 
                     carrito={carrito} 
                     restarDelCarrito={restarDelCarrito} 
@@ -105,8 +107,9 @@ function App() {
                </div>
             } />
 
-            <Route path="/pedidos" element={<div style={{ padding: '20px' }}><Pedidos usuario={usuario} /></div>} />
+            <Route path="/pedidos" element={<div style={{ padding: '20px', paddingBottom: '60px' }}><Pedidos usuario={usuario} /></div>} />
             <Route path="/categorias" element={<Categorias />} />
+            <Route path="/acerca-de" element={<AcercaDe />} />
 
             {/* --- ZONA ADMIN --- */}
             <Route path="/gestion" element={
@@ -140,6 +143,7 @@ function App() {
 
           </Routes>
         </main>
+        <Footer /> {/* Renderizar el Footer globalmente */}
       </Router>
     </NotificationProvider>
   );

@@ -4,46 +4,51 @@
   margin: 20px auto;
   border-collapse: collapse;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #23232e; 
-  color: #cfcfcf; 
+  background-color: var(--card-bg); 
+  color: var(--text-color); 
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
 .tabla-productos th,
 .tabla-productos td {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--card-border);
   padding: 15px;
   text-align: center;
   vertical-align: middle;
+  transition: border-color 0.3s;
 }
 
 .tabla-productos th {
-  background-color: #2b2b36; 
-  color: #82b1ff; 
+  background-color: rgba(128, 128, 128, 0.08); 
+  color: var(--neon-color); 
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 1px;
   font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .tabla-productos tr:last-child td { border-bottom: none; }
-.tabla-productos tr:hover { background-color: #2d2d3b; }
+.tabla-productos tr:hover { background-color: rgba(128, 128, 128, 0.04); }
 
 /* INPUTS PARA EDITAR */
 .tabla-productos input {
-  background: #1a1a24;
-  border: 1px solid #555;
-  color: #fff;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
   padding: 8px;
   border-radius: 4px;
   text-align: center;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .tabla-productos input:focus {
-  border-color: #82b1ff;
+  border-color: var(--neon-color);
   outline: none;
+  box-shadow: 0 0 8px var(--neon-shadow);
 }
 
 /* BOTONES */
@@ -146,15 +151,17 @@ button {
    ========================================================= */
 
 .modal-detalle-card {
-  background: #1a1a24;
-  border: 1px solid #00d2ff;
-  box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--glass-blur));
   border-radius: 12px;
   width: 700px;
   max-width: 90%;
   padding: 30px;
   position: relative;
   animation: aparecerCentro 0.3s ease-out;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .cerrar-modal-btn {
@@ -162,7 +169,7 @@ button {
   top: 10px;
   right: 10px;
   background: transparent;
-  color: #fff;
+  color: var(--text-color);
   font-size: 1.5rem;
   border: none;
   cursor: pointer;
@@ -184,7 +191,8 @@ button {
   height: 300px;
   object-fit: cover;
   border-radius: 8px;
-  border: 2px solid #333;
+  border: 2px solid var(--card-border);
+  transition: border-color 0.3s;
 }
 
 .detalle-info {
@@ -193,15 +201,17 @@ button {
 }
 
 .detalle-info h3 {
-  color: #fff;
+  color: var(--text-title);
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.8rem;
+  transition: color 0.3s;
 }
 
 .categoria-badge {
-  background: rgba(0, 210, 255, 0.1);
-  color: #00d2ff;
+  background: rgba(128, 128, 128, 0.1);
+  border: 1px solid var(--card-border);
+  color: var(--neon-color);
   display: inline-block;
   padding: 4px 10px;
   border-radius: 4px;
@@ -209,68 +219,178 @@ button {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 15px;
+  transition: color 0.3s, border-color 0.3s;
 }
 
 .descripcion-texto {
-  color: #ccc;
+  color: var(--text-color);
   line-height: 1.5;
   margin: 15px 0;
   font-size: 1rem;
+  opacity: 0.85;
+  transition: color 0.3s;
 }
 
 .precio-grande {
   font-size: 2rem;
-  color: #00d2ff;
+  color: var(--neon-color);
   font-weight: bold;
   margin-bottom: 25px;
+  transition: color 0.3s;
 }
 
 .btn-agregar-grande {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(45deg, #00d2ff, #007bff);
+  background: var(--accent-color);
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
   border-radius: 6px;
   text-transform: uppercase;
   margin: 0;
-  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+  box-shadow: 0 4px 15px var(--neon-shadow);
+  transition: all 0.3s;
 }
 
 .btn-agregar-grande:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+  background-color: var(--accent-hover);
+  box-shadow: 0 6px 20px var(--neon-shadow);
 }
 
 /* Responsivo para celulares */
 @media (max-width: 768px) {
   .detalle-contenido {
     flex-direction: column;
+    gap: 20px;
   }
   .detalle-img-container img {
     width: 100%;
-    height: 200px;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+  }
+
+  /* Transformar la tabla rígida en bloques (Tarjetas) */
+  .tabla-productos {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .tabla-productos thead {
+    display: none;
+  }
+
+  .tabla-productos, 
+  .tabla-productos tbody, 
+  .tabla-productos tr, 
+  .tabla-productos td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tabla-productos tr {
+    background-color: var(--card-bg);
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .tabla-productos td {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    padding: 12px 10px;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tabla-productos td:first-child {
+    justify-content: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+  }
+
+  .tabla-productos td:first-child img {
+    width: 75px !important;
+    height: 75px !important;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--neon-shadow);
+    transition: box-shadow 0.3s;
+  }
+
+  .tabla-productos td:last-child {
+    border-bottom: none;
+    padding-top: 15px;
+    justify-content: center;
+  }
+
+  /* Inyectar las etiquetas correspondientes */
+  .tabla-productos td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--neon-color);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-right: 15px;
+    text-align: left;
+    transition: color 0.3s;
+  }
+
+  .tabla-productos td[data-label="Imagen"]::before {
+    content: "";
+  }
+
+  /* Ajustes en los inputs inline para que no se desborden en edición móvil */
+  .tabla-productos input {
+    width: 60% !important;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+
+  /* Modal de visualización de detalles del producto */
+  .modal-detalle-card {
+    width: 95% !important;
+    max-width: 450px !important;
+    padding: 20px !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .input-titulo-dark {
+    font-size: 1.4rem !important;
+  }
+
+  .input-precio-dark {
+    font-size: 1.6rem !important;
+    width: 100% !important;
   }
 }
-
-/* ... Tus estilos anteriores ... */
 
 /* ESTILOS PARA INPUTS OSCUROS EN EL MODAL DE EDICIÓN */
 .input-detalle-dark,
 .textarea-detalle-dark,
 .input-titulo-dark,
 .input-precio-dark {
-  background-color: #0f0f15;
-  border: 1px solid #333;
-  color: #fff;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
   padding: 10px;
   border-radius: 6px;
   font-family: inherit;
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .input-detalle-dark:focus,
@@ -278,8 +398,8 @@ button {
 .input-titulo-dark:focus,
 .input-precio-dark:focus {
   outline: none;
-  border-color: #00d2ff;
-  box-shadow: 0 0 8px rgba(0, 210, 255, 0.2);
+  border-color: var(--neon-color);
+  box-shadow: 0 0 8px var(--neon-shadow);
 }
 
 .input-titulo-dark {
@@ -290,7 +410,7 @@ button {
 
 .input-precio-dark {
   font-size: 2rem;
-  color: #00d2ff;
+  color: var(--neon-color);
   font-weight: bold;
   width: 150px;
 }
@@ -298,6 +418,6 @@ button {
 .textarea-detalle-dark {
   margin-top: 5px;
   margin-bottom: 20px;
-  resize: vertical; /* Permite estirar hacia abajo */
+  resize: vertical;
   line-height: 1.5;
 }

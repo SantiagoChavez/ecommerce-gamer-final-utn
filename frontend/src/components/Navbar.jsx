@@ -1,30 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 
 function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
   const navigate = useNavigate();
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const { tema, toggleTema } = useTheme();
 
   const handleSalir = () => {
     onLogout();
     navigate('/');
+    setMenuAbierto(false);
   };
 
   const cantidadTotal = carrito ? carrito.reduce((acc, item) => acc + item.cantidad, 0) : 0;
 
   return (
     <nav className="navbar">
-      <ul>
-        {/* Siempre visible: Inicio */}
-        <li><Link to="/">🏠 Inicio</Link></li>
+      <div className="navbar-container">
         
-        {/* --- SOLO VISIBLE SI HAY USUARIO --- */}
-        {usuario && (
-          <>
-            <li><Link to="/productos">📦 Catálogo</Link></li>
+        {/* Lado Izquierdo: Marca de la tienda */}
+        <div className="navbar-brand">
+          <Link to="/" onClick={() => setMenuAbierto(false)}>
+            <img src="/logo-utn.png" alt="Logo UTN" className="navbar-logo" />
+            <span className="brand-text">UTN Computer Store</span>
+          </Link>
+        </div>
 
-            {/* BARRA DE BÚSQUEDA (Solo para usuarios) */}
-            <li style={{ flexGrow: 1, margin: '0 20px', maxWidth: '400px' }}>
+        {/* Grupo Derecho: Buscador, Enlaces principales y Hamburguesa con espaciado constante */}
+        <div className="navbar-right-group">
+          {/* Switch de Tema Descriptivo y Sutil */}
+          <div className="theme-switch-container" title={`Cambiar a modo ${tema === 'dark' ? 'claro' : 'oscuro'}`}>
+            <span className="theme-switch-label">{tema === 'dark' ? 'Oscuro' : 'Claro'}</span>
+            <label className="theme-switch">
+              <input 
+                type="checkbox" 
+                checked={tema === 'light'} 
+                onChange={toggleTema}
+              />
+              <span className="theme-slider">
+                <span className="theme-slider-icon">
+                  {tema === 'dark' ? '🌙' : '☀️'}
+                </span>
+              </span>
+            </label>
+          </div>
+          
+          {usuario && (
+            <div className="navbar-search">
               <input 
                 type="text"
                 placeholder="🔍 Buscar producto..."
@@ -33,50 +57,87 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
                     setBusqueda(e.target.value);
                     navigate('/productos');
                 }}
-                style={{
-                    width: '100%',
-                    padding: '8px',
-                    borderRadius: '20px',
-                    border: 'none',
-                    outline: 'none'
-                }}
               />
-            </li>
+            </div>
+          )}
+          
+          <div className="navbar-main-links">
+            <Link to="/" onClick={() => setMenuAbierto(false)}>🏠 Inicio</Link>
+            <Link to="/acerca-de" onClick={() => setMenuAbierto(false)}>ℹ️ Acerca de</Link>
+          </div>
 
-            <li>
-              <Link to="/carrito" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                🛒 <span className="cart-badge">{cantidadTotal}</span>
-              </Link>
-            </li>
-            
-            <li><Link to="/pedidos">📄 Mis Pedidos</Link></li>
-          </>
-        )}
-
-        {/* --- LADO DERECHO (LOGIN / LOGOUT) --- */}
-        {usuario ? (
-          <>
-            {usuario.rol === 'ADMIN' && (
-              <li style={{ marginLeft: '20px', borderLeft:'1px solid #555', paddingLeft:'20px' }}>
-                  <Link to="/gestion" style={{ color: '#ffca28' }}>⚙️ Gestión</Link>
-              </li>
-            )}
-            
-            <li style={{ marginLeft: 'auto' }}>
-              <span style={{ color: 'white', marginRight: '10px' }}>Hola, {usuario.username}</span>
-              <button onClick={handleSalir} style={{ background: 'transparent', border: '1px solid white', color: 'white', cursor: 'pointer', padding:'2px 8px', borderRadius:'4px' }}>
-                Salir
+          <div className="navbar-actions">
+            {usuario ? (
+              <button className="navbar-toggle" onClick={() => setMenuAbierto(!menuAbierto)} aria-label="Menú de usuario">
+                {menuAbierto ? '✖' : '☰'}
               </button>
-            </li>
+            ) : (
+              <Link to="/login" className="btn-login">
+                🔑 Iniciar Sesión
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Menú Lateral Desplegable (Drawer) para acciones del usuario */}
+        {usuario && (
+          <>
+            <div className={`navbar-drawer ${menuAbierto ? 'activo' : ''}`}>
+              <button className="drawer-close" onClick={() => setMenuAbierto(false)}>&times;</button>
+              
+              <div className="drawer-user-info">
+                <span className="user-avatar">👤</span>
+                <span className="user-greeting">Hola, {usuario.username}</span>
+              </div>
+              
+              <div className="drawer-divider"></div>
+              
+              {/* Sección de Tema en el Drawer */}
+              <div className="drawer-theme-section">
+                <span className="drawer-theme-text">Apariencia: <strong>{tema === 'dark' ? 'Oscuro' : 'Claro'}</strong></span>
+                <button onClick={toggleTema} className="drawer-theme-toggle-btn">
+                  {tema === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
+                </button>
+              </div>
+              
+              <ul className="drawer-links">
+                <li onClick={() => setMenuAbierto(false)} className="drawer-only-mobile">
+                  <Link to="/">🏠 Inicio</Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)} className="drawer-only-mobile">
+                  <Link to="/acerca-de">ℹ️ Acerca de</Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)}>
+                  <Link to="/productos">📦 Catálogo</Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)}>
+                  <Link to="/carrito" className="cart-link-drawer">
+                    🛒 Mi Carrito <span className="cart-badge">{cantidadTotal}</span>
+                  </Link>
+                </li>
+                <li onClick={() => setMenuAbierto(false)}>
+                  <Link to="/pedidos">📄 Mis Pedidos</Link>
+                </li>
+                {usuario.rol === 'ADMIN' && (
+                  <li onClick={() => setMenuAbierto(false)} className="admin-link-drawer">
+                    <Link to="/gestion" style={{ color: '#ffca28' }}>⚙️ Panel de Gestión</Link>
+                  </li>
+                )}
+              </ul>
+              
+              <button className="btn-logout" onClick={handleSalir}>
+                Cerrar Sesión
+              </button>
+            </div>
+            
+            {/* Fondo opaco que cubre el resto de la pantalla al abrir el drawer */}
+            {menuAbierto && (
+              <div className="drawer-overlay" onClick={() => setMenuAbierto(false)}></div>
+            )}
           </>
-        ) : (
-          <li style={{ marginLeft: 'auto' }}>
-            <Link to="/login" style={{ backgroundColor: '#007bff', padding: '5px 10px', borderRadius: '4px', color: 'white', textDecoration: 'none' }}>
-              🔑 Iniciar Sesión
-            </Link>
-          </li>
         )}
-      </ul>
+
+      </div>
     </nav>
   );
 }
