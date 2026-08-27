@@ -3,18 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // 1. IMPORTAMOS EL PROVEEDOR DE NOTIFICACIONES
 import { NotificationProvider } from './context/NotificationContext';
 
-import Navbar from './components/Navbar';
-import ProductoList from './components/ProductoList';
-import AgregarProducto from './components/AgregarProducto';
-import Carrito from './components/Carrito';
-import Pedidos from './components/Pedidos';
-import Inicio from './components/Inicio';
-import Categorias from './components/Categorias';
-import Login from './components/Login';
-import AdminPedidos from './components/AdminPedidos'; 
-import Footer from './components/Footer'; // Importar el Footer
-import AcercaDe from './components/AcercaDe'; // Importar AcercaDe
-import './components/Admin.css'; 
+import Navbar from './components/Navbar/Navbar';
+import ProductoList from './components/ProductoList/ProductoList';
+import AgregarProducto from './components/AgregarProducto/AgregarProducto';
+import Carrito from './views/Carrito/Carrito';
+import Pedidos from './views/Pedidos/Pedidos';
+import Inicio from './views/Inicio/Inicio';
+import Categorias from './views/Categorias/Categorias';
+import Login from './views/Login/Login';
+import AdminPedidos from './views/Admin/AdminPedidos'; 
+import Footer from './components/Footer/Footer'; 
+import AcercaDe from './views/AcercaDe/AcercaDe'; 
+import './views/Admin/Admin.css'; 
 
 const RutaPrivadaAdmin = ({ usuario, children }) => {
   if (!usuario) return <Navigate to="/login" />;
