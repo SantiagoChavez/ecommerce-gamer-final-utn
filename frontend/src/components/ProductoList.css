@@ -247,12 +247,116 @@ button {
 @media (max-width: 768px) {
   .detalle-contenido {
     flex-direction: column;
+    gap: 20px;
   }
   .detalle-img-container img {
     width: 100%;
-    height: 200px;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+  }
+
+  /* Transformar la tabla rígida en bloques (Tarjetas) */
+  .tabla-productos {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .tabla-productos thead {
+    display: none; /* Oculta cabecera */
+  }
+
+  .tabla-productos, 
+  .tabla-productos tbody, 
+  .tabla-productos tr, 
+  .tabla-productos td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tabla-productos tr {
+    background-color: #23232e;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(0, 210, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .tabla-productos td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px 10px;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tabla-productos td:first-child {
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+  }
+
+  .tabla-productos td:first-child img {
+    width: 75px !important;
+    height: 75px !important;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+  }
+
+  .tabla-productos td:last-child {
+    border-bottom: none;
+    padding-top: 15px;
+    justify-content: center;
+  }
+
+  /* Inyectar las etiquetas correspondientes */
+  .tabla-productos td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #82b1ff;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-right: 15px;
+    text-align: left;
+  }
+
+  .tabla-productos td[data-label="Imagen"]::before {
+    content: ""; /* Evita la etiqueta "Imagen" sobre la imagen misma */
+  }
+
+  /* Ajustes en los inputs inline para que no se desborden en edición móvil */
+  .tabla-productos input {
+    width: 60% !important;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+
+  /* Modal de visualización de detalles del producto */
+  .modal-detalle-card {
+    width: 95% !important;
+    max-width: 450px !important;
+    padding: 20px !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .input-titulo-dark {
+    font-size: 1.4rem !important;
+  }
+
+  .input-precio-dark {
+    font-size: 1.6rem !important;
+    width: 100% !important;
   }
 }
+
 
 /* ... Tus estilos anteriores ... */
 

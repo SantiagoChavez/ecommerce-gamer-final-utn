@@ -151,7 +151,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
           {productosVisibles.map((p) => (
             <tr key={p.id}>
               {/* 1. IMAGEN */}
-              <td>
+              <td data-label="Imagen">
                 {p.imagenUrl ? (
                   <img
                     src={p.imagenUrl}
@@ -166,7 +166,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
               </td>
 
               {/* 2. MARCA */}
-              <td>
+              <td data-label="Marca">
                 {esAdmin && productoEditando === p.id ? (
                   <input
                     type="text"
@@ -184,7 +184,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
               </td>
 
               {/* 3. PRODUCTO */}
-              <td>
+              <td data-label="Producto">
                 {esAdmin && productoEditando === p.id ? (
                   <input type="text" name="nombre" value={datosEditados.nombre || ""} onChange={handleCambioCampo} />
                 ) : (
@@ -193,7 +193,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
               </td>
 
               {/* 4. PRECIO */}
-              <td>
+              <td data-label="Precio">
                 {esAdmin && productoEditando === p.id ? (
                   <input type="number" name="precio" value={datosEditados.precio || 0} onChange={handleCambioCampo} style={{ width: "80px" }} />
                 ) : (
@@ -202,7 +202,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
               </td>
 
               {/* 5. CATEGORÍA */}
-              <td>
+              <td data-label="Categoría">
                 {esAdmin && productoEditando === p.id ? (
                   <input type="text" name="categoria" value={datosEditados.categoria || ""} onChange={handleCambioCampo} style={{ width: "80px" }} />
                 ) : (
@@ -212,7 +212,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
 
               {/* 6. STOCK (Renderizado condicional limpio) */}
               {esAdmin ? (
-                <td>
+                <td data-label="Stock">
                   {productoEditando === p.id ? (
                     <input type="number" name="stock" value={datosEditados.stock || 0} onChange={handleCambioCampo} style={{ width: "60px" }} />
                   ) : (
@@ -222,7 +222,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
               ) : null}
 
               {/* 7. ACCIONES */}
-              <td>
+              <td data-label="Acciones">
                 {esAdmin ? (
                   productoEditando === p.id ? (
                     <>

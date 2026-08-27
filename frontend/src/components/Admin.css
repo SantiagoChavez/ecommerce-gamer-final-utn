@@ -209,3 +209,44 @@
   color: white;
   box-shadow: 0 0 15px rgba(255, 82, 82, 0.5);
 }
+
+/* --- ESTILOS DE FORMULARIO DE ALTA Y RESPONSIVE --- */
+.admin-form-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .admin-container {
+    padding: 20px 10px;
+  }
+  
+  .admin-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .admin-card {
+    padding: 25px 15px;
+    margin-bottom: 25px;
+  }
+  
+  .admin-form {
+    gap: 15px;
+  }
+  
+  .admin-form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .admin-form-row input {
+    width: 100% !important;
+  }
+  
+  .admin-form input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}

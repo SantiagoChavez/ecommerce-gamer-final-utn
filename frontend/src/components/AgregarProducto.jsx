@@ -48,7 +48,7 @@ function AgregarProducto() {
       <form onSubmit={handleSubmit} className="admin-form">
         
         {/* 2. AGREGAMOS ESTO: MARCA Y NOMBRE EN LA MISMA LINEA */}
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div className="admin-form-row">
             <input 
                 type="text" 
                 name="marca" 
@@ -72,7 +72,7 @@ function AgregarProducto() {
         <input type="text" name="descripcion" placeholder="Descripción breve" value={nuevoProducto.descripcion} onChange={handleChange} required />
         
         {/* También agrupamos Precio y Stock para que quede lindo */}
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div className="admin-form-row">
             <input type="number" name="precio" placeholder="Precio ($)" value={nuevoProducto.precio} onChange={handleChange} required style={{flex: 1}}/>
             <input type="number" name="stock" placeholder="Stock" value={nuevoProducto.stock} onChange={handleChange} required style={{flex: 1}}/>
         </div>
