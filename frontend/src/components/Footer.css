@@ -21,6 +21,7 @@
 .footer-left {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .footer-logo {
@@ -28,6 +29,17 @@
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 3px rgba(0, 210, 255, 0.4));
+}
+
+.version-tag {
+  background-color: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  color: #00d2ff;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 210, 255, 0.2);
 }
 
 .footer-right {
@@ -48,6 +60,6 @@
   }
   
   .footer-logo {
-    height: 16px; /* Ligeramente más pequeño en celular */
+    height: 16px;
   }
 }
