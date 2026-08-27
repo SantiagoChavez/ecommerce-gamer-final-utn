@@ -13,6 +13,7 @@ import Categorias from './components/Categorias';
 import Login from './components/Login';
 import AdminPedidos from './components/AdminPedidos'; 
 import Footer from './components/Footer'; // Importar el Footer
+import AcercaDe from './components/AcercaDe'; // Importar AcercaDe
 import './components/Admin.css'; 
 
 const RutaPrivadaAdmin = ({ usuario, children }) => {
@@ -108,6 +109,7 @@ function App() {
 
             <Route path="/pedidos" element={<div style={{ padding: '20px' }}><Pedidos usuario={usuario} /></div>} />
             <Route path="/categorias" element={<Categorias />} />
+            <Route path="/acerca-de" element={<AcercaDe />} />
 
             {/* --- ZONA ADMIN --- */}
             <Route path="/gestion" element={

@@ -19,7 +19,8 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
       {/* Logo/Marca de la tienda */}
       <div className="navbar-brand">
         <Link to="/" onClick={() => setMenuAbierto(false)}>
-          🎮 <span className="brand-text">UTN Computer Store</span>
+          <img src="/logo-utn.png" alt="Logo UTN" className="navbar-logo" />
+          <span className="brand-text">UTN Computer Store</span>
         </Link>
       </div>
 
@@ -30,9 +31,12 @@ function Navbar({ usuario, onLogout, carrito, busqueda, setBusqueda }) {
 
       {/* Menú de navegación */}
       <ul className={`navbar-menu ${menuAbierto ? 'activo' : ''}`}>
-        {/* Siempre visible: Inicio */}
+        {/* Siempre visible: Inicio e Información */}
         <li onClick={() => setMenuAbierto(false)}>
           <Link to="/">🏠 Inicio</Link>
+        </li>
+        <li onClick={() => setMenuAbierto(false)}>
+          <Link to="/acerca-de">ℹ️ Acerca de</Link>
         </li>
         
         {/* --- SOLO VISIBLE SI HAY USUARIO --- */}

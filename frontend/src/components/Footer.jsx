@@ -8,7 +8,7 @@ function Footer() {
         <span>🎮 UTN Computer Store <span className="version-tag">v1.1.0</span></span>
       </div>
       <div className="footer-right">
-        <span>Santiago Ezequiel Chavez</span>
+        <span>Santiago Chavez | FullStack Developer</span>
       </div>
     </footer>
   );
