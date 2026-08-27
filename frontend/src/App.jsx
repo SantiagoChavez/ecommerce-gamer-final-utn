@@ -12,6 +12,7 @@ import Inicio from './components/Inicio';
 import Categorias from './components/Categorias';
 import Login from './components/Login';
 import AdminPedidos from './components/AdminPedidos'; 
+import Footer from './components/Footer'; // Importar el Footer
 import './components/Admin.css'; 
 
 const RutaPrivadaAdmin = ({ usuario, children }) => {
@@ -140,6 +141,7 @@ function App() {
 
           </Routes>
         </main>
+        <Footer /> {/* Renderizar el Footer globalmente */}
       </Router>
     </NotificationProvider>
   );

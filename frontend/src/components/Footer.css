@@ -1,0 +1,78 @@
+.app-footer {
+  background-color: #1a1a24;
+  border-top: 2px solid #00d2ff;
+  color: #cfcfcf;
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 -4px 15px rgba(0, 210, 255, 0.15);
+  margin-top: auto; /* Empuja el footer hacia abajo si el body usa flex */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h4 {
+  color: #82b1ff;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.footer-section p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.author-name {
+  color: #00d2ff !important;
+  font-weight: 600;
+}
+
+.version-badge {
+  background-color: rgba(0, 210, 255, 0.15);
+  border: 1px solid #00d2ff;
+  color: #00d2ff;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 210, 255, 0.3);
+}
+
+/* =========================================================
+   MEDIA QUERY PARA ADAPTACIÓN MÓVIL
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  
+  .footer-section {
+    min-width: 100%;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+  }
+  
+  .footer-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
