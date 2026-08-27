@@ -23,6 +23,7 @@
 }
 
 .navbar-logo {
+  display: block;
   height: 22px;
   width: auto;
   object-fit: contain;
