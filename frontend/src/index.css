@@ -1,32 +1,90 @@
+/* --- VARIABLES DE TEMA --- */
+:root {
+  /* TEMA OSCURO (Por defecto) */
+  --bg-color: #0c0c12;
+  --bg-image: url('/tech-bg.jpg');
+  --bg-overlay: rgba(15, 15, 20, 0.70);
+  --text-color: #cfcfcf;
+  --text-title: #ffffff;
+  --inicio-bg: radial-gradient(circle at center, #2b2b3d 0%, #000000 100%);
+  
+  --card-bg: rgba(26, 26, 36, 0.75);
+  --card-border: rgba(0, 210, 255, 0.2);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  
+  --neon-color: #00d2ff;
+  --neon-shadow: rgba(0, 210, 255, 0.4);
+  --accent-color: #3f51b5;
+  --accent-hover: #5c6bc0;
+  
+  --navbar-bg: #1a1a24;
+  --navbar-border: #00d2ff;
+  --footer-bg: #1a1a24;
+  --footer-border: #00d2ff;
+  
+  --input-bg: #111;
+  --input-border: #444;
+  --input-text: #fff;
+  
+  --glass-blur: 10px;
+}
+
+:root.light-mode {
+  /* TEMA CLARO */
+  --bg-color: #f4f6f9;
+  --bg-image: none; /* Sin imagen de fondo pesada para un look más limpio y minimalista */
+  --bg-overlay: transparent;
+  --text-color: #333333;
+  --text-title: #111111;
+  --inicio-bg: radial-gradient(circle at center, #ffffff 0%, #eef2f7 100%);
+  
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 123, 255, 0.15);
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  
+  --neon-color: #007bff;
+  --neon-shadow: rgba(0, 123, 255, 0.15);
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  
+  --navbar-bg: #ffffff;
+  --navbar-border: #e0e0e0;
+  --footer-bg: #ffffff;
+  --footer-border: #e0e0e0;
+  
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --input-text: #222222;
+  
+  --glass-blur: 5px;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
-  /* FONDO TECNOLÓGICO */
-  background-image: url('/tech-bg.jpg'); /* Asegurate que la imagen esté en la carpeta public */
+  background-image: var(--bg-image);
   background-size: cover;
   background-position: center;
   background-attachment: fixed; 
   background-repeat: no-repeat;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Capa oscura para legibilidad */
+/* Capa de fondo */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  
-  /* 1. CAMBIO AQUÍ: Bajé la opacidad de 0.85 a 0.70 para que se vea más la imagen */
-  background: rgba(15, 15, 20, 0.70);
-  
-  /* 2. CAMBIO AQUÍ: Bajé el desenfoque de 4px a 1px (Casi nítido, solo suaviza un poco) */
-  /* Si lo quieres TOTALMENTE nítido, cambia 1px por 0px */
+  background: var(--bg-overlay);
   backdrop-filter: blur(1px);         
-  
   z-index: -1;
+  transition: background 0.3s;
 }
 
 #root {
@@ -37,4 +95,4 @@ body::before {
 
 main {
   flex: 1 0 auto;
-}
+}
