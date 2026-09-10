@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import '../components/Admin.css'; // Importamos el CSS donde está .notificacion-oval
+import '../views/Admin/Admin.css'; // Importamos el CSS donde está .notificacion-oval
 
 const NotificationContext = createContext();
 

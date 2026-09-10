@@ -1,4 +1,4 @@
-package com.entregaFinal.gestion;
+package com.entregaFinal.gestion.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

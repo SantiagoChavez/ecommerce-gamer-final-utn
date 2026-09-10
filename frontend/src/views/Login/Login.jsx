@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // 1. IMPORTAMOS EL HOOK
-import { useNotification } from '../context/NotificationContext';
+import { useNotification } from '../../context/NotificationContext';
 
 function Login({ onLogin }) {
   // 2. USAMOS EL HOOK

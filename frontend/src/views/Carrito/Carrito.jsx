@@ -2,7 +2,7 @@ import React from "react";
 import "./Carrito.css";
 import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../../context/NotificationContext";
 
 function Carrito({ carrito, restarDelCarrito, vaciarCarrito, usuario }) {
   

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProductoList.css";
-import { useNotification } from "../context/NotificationContext";
+import { useNotification } from "../../context/NotificationContext";
 
 function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
   const [productos, setProductos] = useState([]);

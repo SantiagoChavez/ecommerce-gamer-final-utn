@@ -1,13 +1,16 @@
-package com.entregaFinal.gestion.repository;
+package com.entregaFinal.gestion.config;
 
 import com.entregaFinal.gestion.model.Usuario;
 import com.entregaFinal.gestion.model.Producto;
+import com.entregaFinal.gestion.repository.UsuarioRepository;
+import com.entregaFinal.gestion.repository.ProductoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Component
+@SuppressWarnings("null")
 public class DataInitializer implements CommandLineRunner {
 
     private final UsuarioRepository usuarioRepository;
