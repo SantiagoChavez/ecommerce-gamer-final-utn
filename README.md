@@ -39,6 +39,67 @@ Este software fue desarrollado y presentado como el **Trabajo Integrador Final**
 
 ---
 
+## 📸 Galería y Recorrido Visual de la Aplicación
+
+A continuación se presentan las principales pantallas, módulos de administración y flujos funcionales de **UTN Computer Store**:
+
+### 1. 🌌 Portada de Acceso y Bienvenida (`Inicio / Autenticación`)
+![Portada de Inicio - UTN Computer Store](frontend/src/assets/portada-README.png)
+- **Diseño Inmersivo Dark Neon:** Interfaz moderna con efectos de resplandor neón, tipografía estilizada y diseño centrado en el usuario.
+- **Acceso Seguro al Catálogo:** Puerta de entrada a la plataforma que guía al usuario a identificarse antes de iniciar su recorrido de compras.
+- **Identidad de Marca:** Estética tecnológica personalizada para la tienda de insumos informáticos de UTN Avellaneda.
+
+---
+
+### 2. 🛍️ Catálogo Público y Experiencia de Compra (`Catálogo / Productos`)
+![Catálogo Completo de Productos](frontend/src/assets/catalogo-productos.png)
+- **Exploración de Hardware y Periféricos:** Visualización clara de productos de primeras marcas (Corsair, Logitech, ASUS, Razer, HyperX) con imagen, marca, categoría y precio.
+- **Gestión Automatizada de Stock:** Botón interactivo de añadir al carrito habilitado para productos en inventario y badge automático **"Sin Stock"** con bloqueo de compra cuando el stock llega a cero.
+- **Búsqueda y Navegación Rápida:** Barra de búsqueda en tiempo real integrada en el encabezado y acceso directo a la vista detallada de cada ítem.
+
+---
+
+### 3. 📱 Menú Lateral y Perfil de Usuario (`Drawer de Navegación`)
+![Barra Lateral de Navegación](frontend/src/assets/barra-lateral.png)
+- **Gestión de Sesión:** Saludo personalizado al usuario autenticado y opción de cierre de sesión seguro en un solo clic.
+- **Navegación Intuitiva:** Enlaces directos a Catálogo, Mis Pedidos y Carrito de Compras con badge reactivo que indica la cantidad de ítems seleccionados en tiempo real.
+- **Permisos por Rol:** Acceso condicional exclusivo al **Panel de Gestión** visible únicamente para usuarios con permisos de administrador (`ADMIN`).
+
+---
+
+### 4. ⚙️ Panel de Operaciones - Alta de Productos (`Backoffice / Gestión`)
+![Panel de Operaciones - Dar de Alta Producto](frontend/src/assets/panel-admin.png)
+- **Formulario Integral de Carga:** Alta ágil de nuevos artículos con especificación de marca, modelo, descripción, precio unitario y stock inicial.
+- **Clasificación Dinámica:** Asignación inmediata por categorías (Teclados, Mouses, Monitores, Placas de Video, Accesorios) y vinculación de imágenes mediante URL directa.
+- **Persistencia en Base de Datos:** Registro instantáneo y sincronizado con MongoDB Atlas mediante la API REST de Spring Boot.
+
+---
+
+### 5. 📊 Gestión Integral de Inventario (`Backoffice / Stock`)
+![Gestión de Stock e Inventario](frontend/src/assets/gestion-stock.png)
+- **Semáforo Visual de Inventario:** Columna de stock destacada con código visual numérico (verde para stock disponible y alerta roja en `0` para productos agotados).
+- **Acciones de Mantenimiento:** Herramientas de administración rápida para consultar ficha técnica, modificar parámetros de producto (lápiz) o eliminar ítems (papelera).
+- **Consistencia Inmediata:** Cualquier modificación en el inventario impacta en tiempo real sobre la disponibilidad en el catálogo del cliente.
+
+---
+
+### 6. 🚚 Control de Pedidos, Facturación PDF y Logística (`Backoffice / Pedidos`)
+![Control de Pedidos y Logística](frontend/src/assets/control-pedidos.png)
+- **Trazabilidad Completa de Compras:** Monitoreo cronológico de órdenes con identificador único de compra, usuario comprador y desglose de cantidad de unidades.
+- **Facturación Automática con jsPDF:** Emisión y descarga en un clic de la factura formal en PDF con cálculo de subtotales, totales y membrete institucional.
+- **Logística y Flujo de Entrega:** Control de estados de pedidos (`FACTURADO`, `PENDIENTE`), botón de despacho (`🚚 Despachar`) y opción de anulación o cancelación de pedidos.
+
+---
+
+### 7. ☀️ Soporte Dual-Theme: Modo Claro (`Light Mode / Accesibilidad`)
+![Modo Claro - Portada](frontend/src/assets/modo-claro.png)
+![Modo Claro - Cliente con Barra Lateral](frontend/src/assets/cliente-modo-claro.png)
+- **Conmutación Dinámica (Theme Toggle):** Switch accesible desde el Navbar y desde el menú lateral para alternar al instante entre Modo Oscuro y Modo Claro.
+- **Adaptación Visual Limpia:** Paleta cromática optimizada para entornos luminosos con fondos claros, manteniendo el contraste y la jerarquía de lectura.
+- **Persistencia de Preferencia:** La elección del tema se preserva de manera global y reactiva a través del `ThemeContext`.
+
+---
+
 ## 🚀 Instalación y Ejecución
 
 ### Requisitos Previos
