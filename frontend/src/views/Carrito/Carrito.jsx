@@ -3,6 +3,7 @@ import "./Carrito.css";
 import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { useNotification } from "../../context/NotificationContext";
+import { API_URL } from "../../config/api";
 
 function Carrito({ carrito, restarDelCarrito, vaciarCarrito, usuario }) {
   
@@ -34,7 +35,7 @@ function Carrito({ carrito, restarDelCarrito, vaciarCarrito, usuario }) {
       })),
     };
 
-    fetch("http://localhost:8080/api/pedidos", {
+    fetch(`${API_URL}/pedidos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(pedido),

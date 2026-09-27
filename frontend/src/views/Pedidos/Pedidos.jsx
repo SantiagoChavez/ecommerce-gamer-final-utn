@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_URL } from "../../config/api";
 import "./Pedidos.css";
 
 function Pedidos({ usuario }) {
@@ -6,7 +7,7 @@ function Pedidos({ usuario }) {
   const [busqueda, setBusqueda] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/pedidos")
+    fetch(`${API_URL}/pedidos`)
       .then((res) => res.json())
       .then((data) => {
         setPedidos(data);

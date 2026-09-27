@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { generarFacturaPDF } from '../../utils/facturaPDF'; 
+import { API_URL } from '../../config/api';
 
 function AdminPedidos() {
   const [pedidos, setPedidos] = useState([]);
@@ -13,7 +14,7 @@ function AdminPedidos() {
   const [pedidoAEliminar, setPedidoAEliminar] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/pedidos")
+    fetch(`${API_URL}/pedidos`)
       .then((res) => res.json())
       .then((data) => setPedidos(data))
       .catch((err) => console.error(err));
@@ -50,7 +51,7 @@ function AdminPedidos() {
     if (!window.confirm(`⚠️ ¿Estás seguro de eliminar ${seleccionados.length} pedidos?\nEsta acción devolverá el stock y no se puede deshacer.`)) return;
 
     const promesas = seleccionados.map(id => 
-        fetch(`http://localhost:8080/api/pedidos/${id}`, { method: 'DELETE' })
+        fetch(`${API_URL}/pedidos/${id}`, { method: 'DELETE' })
     );
 
     try {
@@ -75,7 +76,7 @@ function AdminPedidos() {
 
     if (pedido.estado === "FACTURADO") return;
 
-    fetch(`http://localhost:8080/api/pedidos/${pedido.id}/estado?nuevoEstado=FACTURADO`, { method: "PUT" })
+    fetch(`${API_URL}/pedidos/${pedido.id}/estado?nuevoEstado=FACTURADO`, { method: "PUT" })
     .then(res => { if (!res.ok) throw new Error("Error"); return res.json(); })
     .then(() => {
         setPedidos(prev => prev.map(p => p.id === pedido.id ? { ...p, estado: "FACTURADO" } : p));
@@ -97,7 +98,7 @@ function AdminPedidos() {
   
   const confirmarAnulacion = () => {
       if (!pedidoAAnular) return;
-      fetch(`http://localhost:8080/api/pedidos/${pedidoAAnular.id}/estado?nuevoEstado=PENDIENTE`, { method: "PUT" })
+      fetch(`${API_URL}/pedidos/${pedidoAAnular.id}/estado?nuevoEstado=PENDIENTE`, { method: "PUT" })
       .then(res => { if (!res.ok) throw new Error("Error"); return res.json(); })
       .then(() => {
           setPedidos(prev => prev.map(p => p.id === pedidoAAnular.id ? { ...p, estado: "PENDIENTE" } : p));
@@ -113,7 +114,7 @@ function AdminPedidos() {
   const confirmarEliminacion = () => {
       if (!pedidoAEliminar) return;
       
-      fetch(`http://localhost:8080/api/pedidos/${pedidoAEliminar.id}`, { method: "DELETE" })
+      fetch(`${API_URL}/pedidos/${pedidoAEliminar.id}`, { method: "DELETE" })
       .then(res => {
           if (!res.ok) throw new Error("Error al eliminar");
           setPedidos(prev => prev.filter(p => p.id !== pedidoAEliminar.id));
