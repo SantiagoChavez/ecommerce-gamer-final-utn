@@ -4,15 +4,21 @@ Historial de cambios y mejoras continuas aplicadas sobre el Trabajo Integrador F
 
 ---
 
-## [v1.2.0] - 2026-09-26
+## [v1.2.0] - 2026-09-27
 
 ### Añadido
+* **Despliegue Completo en la Nube (Cloud Deploy):** Puesta en producción pública de la aplicación Fullstack con Frontend alojado en **Vercel** (Edge CDN) y Backend contenerizado alojado en **Render** conectado a **MongoDB Atlas**.
 * **Contenedorización con Docker:** Creación de `Dockerfile` multi-etapa optimizados para el Backend (`maven:3.9.6` para compilar y `eclipse-temurin:21-jre-alpine` para ejecución con usuario no-root) y Frontend (`node:20-alpine` para build y `nginx:alpine` para producción).
 * **Orquestación con Docker Compose (`docker-compose.yml`):** Configuración lista para levantar todo el ecosistema (Backend + Frontend + Atlas) con el comando estándar `docker compose up --build`.
 * **Configuración de Nginx para SPA (`nginx.conf`):** Manejo de rutas virtuales de React Router (`try_files $uri /index.html`) y encabezados de caché para optimizar la carga de assets estáticos.
 * **Módulo Centralizado de API (`api.js`):** Creación de `frontend/src/config/api.js` para desacoplar las URLs de los endpoints y soportar variables de entorno (`VITE_API_URL`) para entornos de desarrollo local, Docker y producción en la nube.
-* **Soporte de CORS Dinámico y Multi-Origen en Spring Boot:** Configuración mediante `@Value` y variables de entorno (`CORS_ALLOWED_ORIGINS`) en `WebConfig.java` y `application.properties`.
-* **Archivos `.dockerignore`:** Optimización de tiempos de compilación y empaquetado de imágenes ignorando carpetas pesadas (`node_modules`, `dist`, `target`, logs, etc.).
+* **Soporte de CORS Dinámico y Multi-Origen en Spring Boot:** Configuración mediante `@Value` y variables de entorno (`CORS_ALLOWED_ORIGINS`) en `WebConfig.java` y `application.properties` para soportar dominios de Vercel y Render.
+* **Documentación Técnica en PDF:** Generación automatizada de [`Guia_Docker_Ecommerce_Gamer_UTN.pdf`](Guia_Docker_Ecommerce_Gamer_UTN.pdf) e [`Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf`](Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf) con análisis comparativo de arquitecturas.
+* **Sección de Resolución de Errores y Bugs en README:** Documentación detallada sobre troubleshooting de Docker PATH, routing SPA en Nginx, cold start en Render y control de concurrencia de stock.
+
+### Solucionado
+* **Resolución de Error 404 en Recarga de Páginas SPA:** Configuración de fallback en Nginx para redirigir peticiones a `index.html`.
+* **Bloqueo de CORS en Producción:** Habilitación de patrones dinámicos (`allowedOriginPatterns`) para aceptar orígenes de Vercel y Render en simultáneo con localhost.
 
 ---
 

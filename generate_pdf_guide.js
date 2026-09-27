@@ -13,12 +13,13 @@ const doc = new jsPDF({
 const pageWidth = doc.internal.pageSize.getWidth();
 const pageHeight = doc.internal.pageSize.getHeight();
 
-// Paleta de colores UTN Dark & Neon
-const primaryDark = [15, 23, 42];       // #0f172a
-const accentBlue = [14, 165, 233];      // #0ea5e9
-const accentNeon = [6, 182, 212];       // #06b6d4
-const textDark = [30, 41, 59];          // #1e293b
-const textMuted = [100, 116, 139];      // #64748b
+// Colores Institucionales y de Diseño
+const primaryDark = [15, 23, 42];       // #0f172a (Azul noche profundo)
+const accentBlue = [14, 165, 233];      // #0ea5e9 (Azul cian)
+const accentNeon = [6, 182, 212];       // #06b6d4 (Neón)
+const accentPurple = [139, 92, 246];    // #8b5cf6 (Púrpura moderno)
+const textDark = [30, 41, 59];          // #1e293b (Texto principal)
+const textMuted = [100, 116, 139];      // #64748b (Texto secundario)
 const codeBg = [241, 245, 249];         // #f1f5f9
 const codeText = [15, 23, 42];
 
@@ -26,10 +27,8 @@ let y = 20;
 
 function checkPageBreak(neededSpace = 25) {
   if (y + neededSpace > pageHeight - 20) {
-    addFooter();
     doc.addPage();
     y = 25;
-    addHeaderBanner();
   }
 }
 
@@ -45,7 +44,7 @@ function addHeaderBanner() {
   doc.text('UTN AVELLANEDA | TECNICATURA UNIVERSITARIA EN PROGRAMACIÓN', 14, 7.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(14, 165, 233);
-  doc.text('GUÍA DIDÁCTICA DOCKER & DOCKER COMPOSE', pageWidth - 14, 7.5, { align: 'right' });
+  doc.text('INFORME TÉCNICO: DOCKER vs DEPLOY NATIVO (JOBFLOW)', pageWidth - 14, 7.5, { align: 'right' });
 }
 
 function addFooter() {
@@ -158,74 +157,93 @@ function drawHighlightCard(title, description, color = [14, 165, 233]) {
 }
 
 // ==========================================
-// PORTADA / ENCABEZADO PRINCIPAL (PÁGINA 1)
+// PÁGINA 1: PORTADA Y FUNDAMENTOS
 // ==========================================
-addHeaderBanner();
 y = 20;
 
 // Portada Header Box
 doc.setFillColor(15, 23, 42);
-doc.roundedRect(14, y, pageWidth - 28, 38, 3, 3, 'F');
+doc.roundedRect(14, y, pageWidth - 28, 40, 3, 3, 'F');
 
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(15);
 doc.setTextColor(255, 255, 255);
-doc.text('GUÍA TÉCNICA DE CONTENEDORIZACIÓN', pageWidth / 2, y + 11, { align: 'center' });
+doc.text('INFORME TÉCNICO DE ARQUITECTURA', pageWidth / 2, y + 11, { align: 'center' });
 
 doc.setFontSize(11);
 doc.setTextColor(6, 182, 212);
-doc.text('Docker & Docker Compose para E-Commerce Gamer Fullstack', pageWidth / 2, y + 18, { align: 'center' });
+doc.text('Contenedorización con Docker vs Despliegue Nativo (JobFlow)', pageWidth / 2, y + 19, { align: 'center' });
 
 doc.setFont('helvetica', 'normal');
 doc.setFontSize(8.5);
 doc.setTextColor(203, 213, 225);
-doc.text('Trabajo Integrador Final | UTN FR Avellaneda | Tecnicatura en Programación', pageWidth / 2, y + 26, { align: 'center' });
-doc.text('Autor: Santiago Ezequiel Chavez | Versión: 1.2.0 (Septiembre 2026)', pageWidth / 2, y + 32, { align: 'center' });
+doc.text('Trabajo Integrador Final | UTN FR Avellaneda | Tecnicatura Universitaria en Programación', pageWidth / 2, y + 27, { align: 'center' });
+doc.text('Autor: Santiago Ezequiel Chavez | Septiembre 2026', pageWidth / 2, y + 33, { align: 'center' });
 
-y += 44;
+y += 46;
 
-// SECCIÓN 1: INTRODUCCIÓN
-drawSectionTitle(1, '¿Qué es Docker y por qué lo implementamos?');
-drawParagraph('Docker es una plataforma de virtualización a nivel de sistema operativo que permite empaquetar una aplicación junto con todas sus dependencias (código, runtime de Java, Node, servidor Nginx, librerías y configuraciones) dentro de una unidad estandarizada y aislada llamada Contenedor.');
+// SECCIÓN 1: DOCKER EN EL E-COMMERCE
+drawSectionTitle(1, '¿Por qué se incorporó Docker en el E-Commerce Gamer?');
+drawParagraph('El proyecto E-Commerce Gamer es una solución Fullstack heterogénea (políglota): combina un backend en Java 21 con Spring Boot 3, un frontend SPA en React 18 / Vite, un servidor web Nginx y persistencia NoSQL en MongoDB Atlas.');
 
 drawHighlightCard(
-  '💡 El Problema del "En mi máquina sí funciona"',
-  'Tradicionalmente, para correr este proyecto un evaluador debía instalar Java 21, Maven, Node.js, configurar variables de entorno en Windows y lidiar con conflictos de versiones. Con Docker, la aplicación corre de forma idéntica en cualquier máquina (Windows, Linux, macOS) garantizando Cero Fricción y reproducible al 100%.',
+  '🎯 El Propósito Principal de Docker en este Proyecto',
+  'Garantizar que el sistema completo pueda compilarse, configurarse y ejecutarse de forma 100% idéntica en cualquier computadora o servidor (Windows, Linux, macOS o Render en la nube) con un único comando, eliminando toda dependencia manual de JDK, Node.js o Maven en el host.',
   [14, 165, 233]
 );
 
-drawParagraph('Conceptos Fundamentales que debes dominar:');
+drawParagraph('Conceptos Fundamentales aplicados en el E-Commerce:');
 
 autoTable(doc, {
   startY: y,
   margin: { left: 14, right: 14 },
-  head: [['Concepto', 'Definición', 'Analogía en Programación']],
+  head: [['Elemento', 'Función en el E-Commerce', 'Beneficio Técnico']],
   body: [
-    ['Dockerfile', 'Archivo de texto con instrucciones paso a paso para construir una imagen.', 'Es como una Clase (Molde o Blueprint).'],
-    ['Imagen Docker', 'Paquete inmutable y autocontenido con el código, runtime y librerías.', 'Es como el binario compilado (.exe / .jar).'],
-    ['Contenedor', 'Instancia viva en ejecución y aislada de una imagen Docker.', 'Es como un Objeto instanciado en memoria.'],
-    ['Docker Compose', 'Herramienta para orquestar y coordinar múltiples contenedores interconectados.', 'El archivo "main" que levanta backend y frontend juntos.'],
+    ['backend/Dockerfile', 'Compila con Maven y ejecuta el JAR en JRE 21 Alpine.', 'Multi-stage: Reduce el peso de 600MB a 150MB y añade seguridad no-root.'],
+    ['frontend/Dockerfile', 'Compila React con Vite y lo monta en Nginx Alpine.', 'Multi-stage: No requiere Node en ejecución; Nginx sirve estáticos a alta velocidad.'],
+    ['frontend/nginx.conf', 'Servidor web HTTP con regla try_files $uri /index.html.', 'Elimina los errores 404 al recargar rutas de React Router (SPA).'],
+    ['docker-compose.yml', 'Orquestador multi-contenedor con red interna y puertos.', 'Levanta Backend (8080) y Frontend (5176) sincronizados con 1 solo comando.']
   ],
   headStyles: { fillColor: [15, 23, 42], textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8 },
   bodyStyles: { fontSize: 7.5, textColor: [30, 41, 59] },
   alternateRowStyles: { fillColor: [248, 250, 252] },
-  theme: 'grid',
+  theme: 'grid'
 });
 
-y = doc.lastAutoTable.finalY + 6;
+y = doc.lastAutoTable.finalY + 8;
 
-// SECCIÓN 2: ARQUITECTURA DEL PROYECTO
-drawSectionTitle(2, 'Arquitectura de Contenedores del E-Commerce');
-drawParagraph('El ecosistema está orquestado mediante 2 servicios en contenedores independientes que interactúan con la base de datos en la nube:');
+// SECCIÓN 2: COMPARACIÓN CON JOBFLOW
+drawSectionTitle(2, 'Comparación de Despliegue: E-Commerce Gamer vs JobFlow');
+drawParagraph('En tu dashboard de Render tienes actualmente dos proyectos con estrategias de despliegue y tecnologías completamente distintas. Comprender esta diferencia es clave para tu formación profesional:');
+
+drawSubTitle('1. ¿Cómo está desplegado JobFlow? (Despliegue Nativo con Buildpack de Node)');
+drawParagraph('JobFlow es una API desarrollada en Node.js / Express. En Render seleccionaste el runtime "Node".');
+drawParagraph('• Cómo funciona: Render provee una máquina virtual estándar con Node y npm preinstalados. Render ejecuta "npm install" y luego "npm start" directamente sobre su sistema operativo.');
+drawParagraph('• Ventaja: Es muy rápido y simple de configurar para aplicaciones puramente en JavaScript/TypeScript.');
+drawParagraph('• Limitación: Estás atado a las versiones de Node y librerías del sistema que Render ofrece. Si tu proyecto fuera en Java o necesitara Nginx, el runtime de Node no sirve.');
+
+drawSubTitle('2. ¿Cómo está desplegado el E-Commerce Gamer? (Despliegue con Docker / Contenedores)');
+drawParagraph('El E-Commerce utiliza el runtime "Docker" en Render para el Backend y "Vercel CDN" para el Frontend.');
+drawParagraph('• Cómo funciona: Render no intenta adivinar el lenguaje ni usar sus paquetes nativos. Simplemente toma tu "Dockerfile", descarga la imagen oficial de Java 21 Alpine, compila el código adentro y levanta el contenedor aislado.');
+drawParagraph('• Ventaja: Independencia absoluta. El mismo Dockerfile corre en Render, en tu PC local con Docker Desktop, en AWS, en Azure o en Google Cloud sin cambiar una sola coma.');
+
+y += 2;
+
+// TABLA COMPARATIVA EXHAUSTIVA
+drawSubTitle('Cuadro Comparativo Detallado');
 
 autoTable(doc, {
   startY: y,
   margin: { left: 14, right: 14 },
-  head: [['Servicio', 'Tecnología', 'Puerto Interno', 'Puerto Expuesto', 'Propósito']],
+  head: [['Criterio', 'JobFlow (Deploy Nativo Node)', 'E-Commerce Gamer (Deploy con Docker)']],
   body: [
-    ['ecommerce-backend', 'Spring Boot 3 + JRE 21 Alpine', '8080', '8080', 'API REST, persistencia NoSQL, validación de stock'],
-    ['ecommerce-frontend', 'React 18 + Vite + Nginx Alpine', '80', '5176', 'SPA, catálogo gamer, routing de vistas, carrito y PDF'],
-    ['MongoDB Atlas', 'Cluster Cloud NoSQL', '27017', 'En la nube', 'Persistencia permanente y distribuida de datos']
+    ['Tecnología', 'Node.js / Express (Monolenguaje)', 'Java 21 Spring Boot + React 18 + Nginx (Políglota)'],
+    ['Entorno de Ejecución', 'Entorno administrado por Render (Buildpack)', 'Contenedor Linux Alpine personalizado e inmutable'],
+    ['Control de Versiones', 'Limitado a las versiones de Node de Render', 'Control total: Java 21, Maven 3.9, Node 20, Nginx Alpine'],
+    ['Portabilidad Cloud', 'Acoplado a plataformas que soporten Node', '100% portable a cualquier nube (AWS, GCP, Azure, etc.)'],
+    ['Ejecución Local', 'Requiere Node instalado en la máquina local', 'Se levanta con "docker compose up" sin instalar Java ni Node'],
+    ['Aislamiento y Seguridad', 'Comparte dependencias del sistema anfitrión', 'Aislado en sandbox con usuario no-root por seguridad'],
+    ['Optimización de Peso', 'Sube la carpeta con todas las dependencias', 'Multi-stage: Descarta compiladores y reduce tamaño']
   ],
   headStyles: { fillColor: [14, 165, 233], textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8 },
   bodyStyles: { fontSize: 7.5, textColor: [30, 41, 59] },
@@ -233,129 +251,84 @@ autoTable(doc, {
   theme: 'grid'
 });
 
-y = doc.lastAutoTable.finalY + 6;
+y = doc.lastAutoTable.finalY + 8;
 
-// SECCIÓN 3: DETALLE DEL BACKEND DOCKERFILE
-drawSectionTitle(3, 'Desglose del Dockerfile del Backend (Multi-Stage Build)');
-drawParagraph('Para que el contenedor sea liviano y seguro, utilizamos el patrón Multi-Stage Build (Construcción en Múltiples Etapas):');
+// SECCIÓN 3: ARQUITECTURA EN LA NUBE DEL E-COMMERCE
+drawSectionTitle(3, 'Arquitectura Final de Producción en la Nube (Cloud Topology)');
+drawParagraph('Para lograr la máxima velocidad y disponibilidad sin costo, separamos las capas de la aplicación aprovechando lo mejor de cada plataforma:');
 
+autoTable(doc, {
+  startY: y,
+  margin: { left: 14, right: 14 },
+  head: [['Capa', 'Plataforma', 'URL / Acceso', 'Rol en la Arquitectura']],
+  body: [
+    ['Frontend (UI)', 'Vercel (Edge CDN)', 'https://...vercel.app', 'Distribución global de la SPA, carga instantánea y SSL.'],
+    ['Backend (API)', 'Render (Docker Web Service)', 'https://...onrender.com/api', 'Servidor Spring Boot 3 con Java 21 en contenedor Docker.'],
+    ['Base de Datos', 'MongoDB Atlas (AWS Cloud)', 'Cluster MongoDB en la nube', 'Persistencia permanente NoSQL con réplicas y alta disponibilidad.']
+  ],
+  headStyles: { fillColor: [139, 92, 246], textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8 },
+  bodyStyles: { fontSize: 7.5, textColor: [30, 41, 59] },
+  alternateRowStyles: { fillColor: [248, 250, 252] },
+  theme: 'grid'
+});
+
+y = doc.lastAutoTable.finalY + 8;
+
+// SECCIÓN 4: DESGLOSE DE CÓDIGO
+drawSectionTitle(4, 'Código Clave Implementado para la Contenedorización');
+
+drawParagraph('1. Multi-Stage Build del Backend (backend/Dockerfile):');
 drawCodeBlock([
-  '# ETAPA 1: COMPILACIÓN CON MAVEN (Descarta después)',
+  '# ETAPA 1: BUILD CON MAVEN Y JAVA 21',
   'FROM maven:3.9.6-eclipse-temurin-21-alpine AS build',
   'WORKDIR /app',
   'COPY pom.xml .',
-  'RUN mvn dependency:go-offline -B  # Guarda dependencias en caché',
+  'RUN mvn dependency:go-offline -B',
   'COPY src ./src',
-  'RUN mvn clean package -DskipTests # Genera el archivo .jar',
+  'RUN mvn clean package -DskipTests',
   '',
-  '# ETAPA 2: IMAGEN FINAL LIGERA (SOLO RUNTIME JRE 21)',
+  '# ETAPA 2: RUNTIME ULTRA LIVIANO CON JRE 21',
   'FROM eclipse-temurin:21-jre-alpine',
   'WORKDIR /app',
   'RUN addgroup -S appgroup && adduser -S appuser -G appgroup',
-  'USER appuser                     # Usuario sin privilegios por seguridad',
+  'USER appuser',
   'COPY --from=build /app/target/*.jar app.jar',
   'EXPOSE 8080',
   'ENTRYPOINT ["java", "-jar", "app.jar"]'
 ], 'backend/Dockerfile');
 
-drawHighlightCard(
-  '🎯 ¿Por qué es fundamental el Multi-Stage Build?',
-  'Maven y el JDK completo superan los 600MB. Con Multi-Stage Build, el contenedor final SOLO contiene el JRE ligero (menos de 150MB) y el JAR compilado. El código fuente original y el compilador Maven se descartan, reduciendo drásticamente la superficie de ataque y el uso de memoria.',
-  [16, 185, 129]
-);
-
-// SECCIÓN 4: DETALLE DEL FRONTEND DOCKERFILE Y NGINX
-drawSectionTitle(4, 'Desglose del Dockerfile del Frontend y Nginx');
-drawParagraph('En producción no usamos el servidor de desarrollo de Vite. En su lugar, generamos los archivos estáticos HTML/JS/CSS y los servimos con Nginx:');
-
-drawCodeBlock([
-  '# ETAPA 1: BUILD ESTÁTICO DE REACT',
-  'FROM node:20-alpine AS build',
-  'WORKDIR /app',
-  'COPY package*.json ./',
-  'RUN npm install',
-  'COPY . .',
-  'RUN npm run build               # Genera la carpeta /dist optimizada',
-  '',
-  '# ETAPA 2: SERVIDOR NGINX ALPINE ULTRA LIVIANO',
-  'FROM nginx:alpine',
-  'WORKDIR /usr/share/nginx/html',
-  'RUN rm -rf ./*',
-  'COPY --from=build /app/dist .',
-  'COPY nginx.conf /etc/nginx/conf.d/default.conf',
-  'EXPOSE 80',
-  'CMD ["nginx", "-g", "daemon off;"]'
-], 'frontend/Dockerfile');
-
-drawSubTitle('¿Por qué necesitamos frontend/nginx.conf? (El problema del SPA Routing)');
-drawParagraph('En las aplicaciones SPA de React Router, al recargar en rutas como "/gestion" o "/pedidos", el navegador le pide al servidor ese archivo físico. Si Nginx no está configurado, devolvería un error 404. La directiva try_files redirige todas las rutas a index.html para que React maneje la navegación:');
-
+drawParagraph('2. Servidor Nginx para React SPA (frontend/nginx.conf):');
 drawCodeBlock([
   'server {',
   '    listen 80;',
   '    location / {',
   '        root /usr/share/nginx/html;',
   '        index index.html;',
-  '        try_files $uri $uri/ /index.html;  # Soluciona 404 en rutas React',
+  '        try_files $uri $uri/ /index.html;  # Soporte React Router',
   '    }',
   '}'
 ], 'frontend/nginx.conf');
 
-// SECCIÓN 5: ORQUESTACIÓN CON DOCKER COMPOSE
-drawSectionTitle(5, 'Orquestación con docker-compose.yml');
-drawParagraph('Docker Compose permite coordinar ambos contenedores, configurar puertos, variables de entorno y orden de inicio con un único comando:');
-
+drawParagraph('3. Orquestador Local (docker-compose.yml):');
 drawCodeBlock([
   'services:',
   '  backend:',
   '    build: ./backend',
-  '    container_name: ecommerce-gamer-backend',
-  '    ports:',
-  '      - "8080:8080"               # [Puerto en tu PC]:[Puerto en el contenedor]',
+  '    ports: ["8080:8080"]',
   '    environment:',
-  '      - SPRING_DATA_MONGODB_URI=mongodb+srv://... (MongoDB Atlas)',
-  '      - CORS_ALLOWED_ORIGINS=http://localhost:5176,http://localhost:80',
-  '    restart: unless-stopped',
-  '',
+  '      - SPRING_DATA_MONGODB_URI=mongodb+srv://... (Atlas)',
   '  frontend:',
   '    build: ./frontend',
-  '    container_name: ecommerce-gamer-frontend',
-  '    ports:',
-  '      - "5176:80"                 # Mapea el puerto 80 de Nginx al 5176',
-  '    depends_on:',
-  '      - backend                   # Garantiza que el backend inicie primero',
-  '    restart: unless-stopped'
+  '    ports: ["5176:80"]',
+  '    depends_on: [backend]'
 ], 'docker-compose.yml');
 
-// SECCIÓN 6: COMANDOS ESENCIALES
-drawSectionTitle(6, 'Guía Rápida de Comandos (Docker Cheatsheet)');
-
-autoTable(doc, {
-  startY: y,
-  margin: { left: 14, right: 14 },
-  head: [['Comando', 'Descripción']],
-  body: [
-    ['docker compose up --build', 'Compila las imágenes y levanta todos los contenedores mostrando logs.'],
-    ['docker compose up -d', 'Levanta los contenedores en segundo plano (modo detached).'],
-    ['docker compose ps', 'Muestra el estado de salud y puertos de los contenedores.'],
-    ['docker compose logs -f', 'Sigue los logs en tiempo real de todos los servicios.'],
-    ['docker compose down', 'Detiene y destruye los contenedores de forma limpia.'],
-    ['docker images', 'Lista todas las imágenes descargadas y construidas en el equipo.'],
-    ['docker exec -it <nombre> sh', 'Abre una consola dentro del contenedor en ejecución.']
-  ],
-  headStyles: { fillColor: [15, 23, 42], textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8 },
-  bodyStyles: { fontSize: 7.5, textColor: [30, 41, 59] },
-  alternateRowStyles: { fillColor: [248, 250, 252] },
-  theme: 'grid'
-});
-
-y = doc.lastAutoTable.finalY + 6;
-
-// Resumen Final
+// SECCIÓN 5: CONCLUSIÓN PEDAGÓGICA
+drawSectionTitle(5, 'Conclusión Académica y Profesional');
 drawHighlightCard(
-  '🎓 Valor Académico para la Evaluación Final',
-  'La contenedorización demuestra dominio en DevOps, microservicios, seguridad no-root, optimización de imágenes (Multi-stage) y servidores de producción (Nginx). Esto ubica el proyecto en un nivel profesional y competitivo.',
-  [6, 182, 212]
+  '🎓 Síntesis para tu Examen o Presentación',
+  '• JobFlow utiliza un despliegue nativo rápido ideal para APIs monolíticas en Node.js.\n• E-Commerce Gamer implementa una arquitectura moderna basada en Contenedores Docker y Microservicios, permitiendo desacoplar Java 21, React y Nginx de forma estandarizada y lista para escalar en la nube.\n• Ambas soluciones son válidas, pero Docker representa el estándar supremo de la industria en DevOps y arquitecturas Cloud Native.',
+  [14, 165, 233]
 );
 
 // Aplicar Headers y Footers en todas las páginas generadas
@@ -366,7 +339,7 @@ for (let i = 1; i <= totalPages; i++) {
   addFooter();
 }
 
-const outputPath = path.join(__dirname, 'Guia_Docker_Ecommerce_Gamer_UTN.pdf');
+const outputPath = path.join(__dirname, 'Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf');
 const pdfBuffer = Buffer.from(doc.output('arraybuffer'));
 fs.writeFileSync(outputPath, pdfBuffer);
 console.log('PDF generado exitosamente en:', outputPath);

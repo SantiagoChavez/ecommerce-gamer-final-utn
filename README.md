@@ -5,8 +5,18 @@
 # Trabajo Integrador Final - E-Commerce Fullstack
 ### Tienda de Insumos Informáticos - UTN Avellaneda
 
+<p align="center">
+  <a href="https://ecommerce-gamer-final-utn.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Demo_Online-Vercel_Frontend-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Demo">
+  </a>
+  <a href="https://ecommerce-gamer-final-utn.onrender.com/api/productos" target="_blank">
+    <img src="https://img.shields.io/badge/⚡_API_REST-Render_Backend-46E3B7?style=for-the-badge&logo=render&logoColor=black" alt="Render API">
+  </a>
+  <img src="https://img.shields.io/badge/🍃_Base_de_Datos-MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB Atlas">
+  <img src="https://img.shields.io/badge/🐳_Contenedores-Docker_&_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+</p>
 
-Este proyecto es una aplicación web Fullstack de E-commerce diseñada para una Tienda de Insumos Informáticos. Ofrece una solución integral que abarca desde el catálogo público y carrito de compras para clientes, hasta un panel de administración avanzado (Backoffice) con gestión de stock, control de pedidos, facturación PDF y logística.
+Este proyecto es una aplicación web Fullstack de E-commerce diseñada para una Tienda de Insumos Informáticos. Ofrece una solución integral que abarca desde el catálogo público y carrito de compras para clientes, hasta un panel de administración avanzado (Backoffice) con gestión de stock en tiempo real, control de pedidos, facturación en PDF y logística de despacho.
 
 Este software fue desarrollado y presentado como el **Trabajo Integrador Final** para aprobar la cursada de la **Tecnicatura Universitaria en Programación** en la **Universidad Tecnológica Nacional (UTN) Facultad Regional Avellaneda**.
 
@@ -18,6 +28,18 @@ Este software fue desarrollado y presentado como el **Trabajo Integrador Final**
 * **Institución:** Universidad Tecnológica Nacional (UTN) - Facultad Regional Avellaneda
 * **Carrera:** Tecnicatura Universitaria en Programación
 * **Propósito:** Trabajo Integrador Final de Cátedra
+* **Versión:** `v1.2.0` (Septiembre 2026)
+
+---
+
+## 🌐 Enlaces de Acceso y Demo en Vivo (Cloud Deploy)
+
+La aplicación se encuentra 100% desplegada y operativa en la nube para acceso público sin requerir instalaciones:
+
+* 🛍️ **Frontend de la Tienda (React SPA):** [https://ecommerce-gamer-final-utn.vercel.app](https://ecommerce-gamer-final-utn.vercel.app)
+* 🔌 **Backend API REST (Spring Boot):** [https://ecommerce-gamer-final-utn.onrender.com/api/productos](https://ecommerce-gamer-final-utn.onrender.com/api/productos)
+* 📑 **Guía Técnica de Docker en PDF:** [`Guia_Docker_Ecommerce_Gamer_UTN.pdf`](Guia_Docker_Ecommerce_Gamer_UTN.pdf)
+* 📊 **Informe Arquitectura Docker vs JobFlow en PDF:** [`Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf`](Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf)
 
 ---
 
@@ -25,23 +47,25 @@ Este software fue desarrollado y presentado como el **Trabajo Integrador Final**
 
 ### Backend (API REST)
 * ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) **Java 17/21**: Lenguaje de programación base.
-* ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring&logoColor=white) **Spring Boot 3.x**: Framework principal para el backend y API REST.
-* ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **Spring Data MongoDB**: Mapeo y persistencia de datos NoSQL.
-* ![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB Atlas**: Base de datos NoSQL alojada en la nube.
-* ![Apache Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white) **Maven**: Gestión de dependencias y empaquetado del software.
+* ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring&logoColor=white) **Spring Boot 3.x**: Framework principal para backend y arquitectura REST.
+* ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **Spring Data MongoDB**: Mapeo y persistencia de documentos NoSQL.
+* ![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB Atlas**: Cluster NoSQL distribuido y persistente en la nube.
+* ![Apache Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white) **Maven**: Gestión de dependencias, testing y ciclo de vida de compilación.
 
 ### Frontend (SPA)
-* ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) **React 18**: Librería declarativa para interfaces de usuario.
-* ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite**: Servidor de desarrollo y empaquetador ultrarrápido.
-* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) **React Router v6**: Enrutamiento dinámico SPA y rutas protegidas.
-* ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3 Moderno**: Estilos personalizados, diseño "Dark Neon", glassmorphism y micro-animaciones.
-* 📄 **jsPDF & AutoTable**: Generación dinámica y descarga de comprobantes en PDF.
+* ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) **React 18**: Librería declarativa para interfaces de usuario reactivas.
+* ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite**: Servidor de desarrollo ultrarrápido y empaquetador para producción.
+* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) **React Router v6**: Enrutamiento dinámico SPA y rutas protegidas por roles.
+* ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3 Moderno**: Estética "Dark Neon", modo claro, diseño responsivo y micro-animaciones.
+* 📄 **jsPDF & AutoTable**: Generación dinámica y descarga instantánea de comprobantes de facturación en PDF.
 * 🧪 **Vitest & React Testing Library**: Suite de 13 pruebas unitarias y de integración frontend.
 
-### DevOps & Contenedores
-* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker**: Contenedorización multi-stage (`Maven + JRE 21` para el Backend y `Node.js + Nginx Alpine` para el Frontend).
-* ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Compose**: Orquestación y levantamiento de todo el stack fullstack en un solo comando.
-* ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) **Nginx**: Servidor web de producción de alto rendimiento con soporte de enrutamiento SPA y compresión.
+### DevOps, Contenedores e Infraestructura
+* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Multi-Stage**: Contenedores optimizados (`Maven 3.9 + JRE 21 Alpine` para Backend y `Node 20 + Nginx Alpine` para Frontend).
+* ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Compose**: Orquestación local y levantamiento sincronizado de todo el stack.
+* ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) **Nginx**: Servidor web HTTP con soporte de enrutamiento SPA (`try_files`) y compresión.
+* ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white) **Vercel Edge Network**: Alojamiento del Frontend con CI/CD automático.
+* ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black) **Render Cloud**: Despliegue del contenedor Docker del Backend.
 
 ---
 
@@ -106,77 +130,101 @@ A continuación se presentan las principales pantallas, módulos de administraci
 
 ---
 
-## 🚀 Instalación y Ejecución
+## 🚀 Métodos de Instalación y Ejecución Local
 
-El proyecto puede ser ejecutado de 3 formas distintas según tu entorno y preferencia:
+Si deseas correr el proyecto en tu propia computadora, dispones de 3 modalidades:
 
-### Opción A: 🐳 Arranque con Docker Compose (Multiplataforma - Recomendado)
-Si tienes instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/), puedes levantar todo el stack (Backend + Frontend Nginx + Conexión a MongoDB Atlas) con **un solo comando** sin necesidad de instalar Java, Maven ni Node.js en tu sistema operativo:
+### Opción 1: 🐳 Arranque con Docker Compose (Recomendado / Multiplataforma)
+Si tienes [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y abierto:
 
-1. Clona el repositorio y abre una terminal en la raíz del proyecto:
+1. Abre una terminal en la raíz del proyecto y ejecuta:
    ```bash
    docker compose up --build
    ```
-2. Una vez completado el inicio, abre tu navegador en:
+2. Una vez levantados los contenedores, abre:
    * **Frontend:** [http://localhost:5176](http://localhost:5176)
    * **Backend API:** [http://localhost:8080/api/productos](http://localhost:8080/api/productos)
 
-Para detener los contenedores en cualquier momento:
+Para detener los contenedores:
 ```bash
 docker compose down
 ```
 
 ---
 
-### Opción B: ⚡ Arranque Rápido con Script (Nativo en Windows)
-Si estás en Windows y tienes Java 17+ y Node.js instalados:
+### Opción 2: ⚡ Arranque Rápido con Script (Nativo en Windows)
+Si tienes Java 17+ y Node.js configurados en Windows:
 
-1. Haz doble clic sobre el archivo [`lanzarProyecto.vbs`](lanzarProyecto.vbs).
-2. Se abrirá un cuadro de diálogo informando el arranque y, tras unos segundos, se abrirá automáticamente tu navegador en `http://localhost:5176` con la aplicación lista para usar.
-3. *Alternativamente*, puedes ejecutar el archivo [`start_proyecto.bat`](start_proyecto.bat) en una consola.
+1. Haz doble clic sobre [`lanzarProyecto.vbs`](lanzarProyecto.vbs) o ejecuta [`start_proyecto.bat`](start_proyecto.bat).
+2. Se iniciará el backend, el frontend y se abrirá automáticamente el navegador en `http://localhost:5176`.
 
 ---
 
-### Opción C: 🛠️ Método Manual (Paso a Paso)
+### Opción 3: 🛠️ Método Manual (Paso a Paso)
 
 #### Paso 1: Configurar y arrancar el Backend
-1. Abre una terminal en la carpeta `/backend`.
-2. Compila y ejecuta el backend con Maven:
+1. Abre una terminal en `/backend`.
+2. Compila y ejecuta con Maven:
    ```bash
    mvn spring-boot:run
    ```
-   *(El backend estará escuchando en `http://localhost:8080`)*
+   *(Backend escuchando en `http://localhost:8080`)*
 
 #### Paso 2: Configurar y arrancar el Frontend
-1. Abre otra terminal en la carpeta `/frontend`.
-2. Instala las dependencias necesarias (solo la primera vez):
+1. Abre otra terminal en `/frontend`.
+2. Instala dependencias y arranca el servidor de desarrollo:
    ```bash
    npm install
-   ```
-3. Ejecuta el servidor de desarrollo de Vite:
-   ```bash
    npm run dev
    ```
-   *(La web abrirá por defecto en `http://localhost:5176`)*
+   *(Frontend disponible en `http://localhost:5176`)*
 
 #### Paso 3: Ejecutar la Suite de Pruebas Unitarias (Vitest)
-1. Abre una terminal en la carpeta `/frontend`.
-2. Ejecuta el comando de pruebas:
-   ```bash
-   npm run test
-   ```
-   *(Correrá las 13 pruebas unitarias y de integración de Vitest validando la UX y casos borde)*
+```bash
+npm run test
+```
+*(Ejecuta las 13 pruebas automatizadas de Vitest con JSDOM).*
 
 ---
 
 ## 🔑 Usuarios de Prueba (Generados Automáticamente)
 
-Al iniciar el backend por primera vez, el sistema creará de forma automática estos usuarios en la base de datos para que puedas probar la aplicación inmediatamente:
+Al iniciar el backend por primera vez, el sistema crea automáticamente estos usuarios de prueba en MongoDB Atlas:
 
 | Usuario | Contraseña | Rol / Permisos | Acceso Permitido |
 | :--- | :--- | :--- | :--- |
 | **admin** | `1234` | `ADMIN` | Catálogo de compra + Acceso exclusivo al Panel de Gestión (`/gestion`) |
 | **cliente** | `1234` | `USER` | Catálogo, añadir al carrito, realizar compras e historial de pedidos |
+
+---
+
+## 🐛 Registro de Errores Resueltos y Solución de Problemas (Troubleshooting & Bug Fixes)
+
+Durante el ciclo de desarrollo, contenedorización y despliegue del proyecto se identificaron y resolvieron los siguientes desafíos técnicos:
+
+### 1. `docker: command not found` en terminales de Windows
+* **Causa:** Al instalar Docker Desktop mientras una terminal (Git Bash o PowerShell) ya estaba abierta, la sesión conservaba la variable `PATH` antigua del sistema operativo.
+* **Solución:** Cargar la ruta en la sesión activa con `export PATH="$PATH:/c/Users/Santiago/AppData/Local/Programs/DockerDesktop/resources/bin"` o reiniciar la terminal del IDE.
+
+### 2. Error 404 al recargar rutas de React Router en Producción (Nginx)
+* **Causa:** En aplicaciones SPA (Single Page Applications), al refrescar rutas como `/gestion` o `/pedidos`, los servidores web tradicionales buscan un archivo físico en el disco que no existe.
+* **Solución:** Se configuró en `frontend/nginx.conf` la directiva `try_files $uri $uri/ /index.html;`, permitiendo que Nginx redirija las peticiones a `index.html` para que React Router resuelva la navegación en el cliente.
+
+### 3. Error de CORS en peticiones Frontend (Vercel) ➔ Backend (Render)
+* **Causa:** El navegador bloqueaba las peticiones cruzadas originadas desde dominios de Vercel (`*.vercel.app`) hacia la API de Spring Boot por políticas de origen cruzado estrictas.
+* **Solución:** Se parametrizó `WebConfig.java` utilizando `.allowedOriginPatterns(...)` con soporte dinámico para `https://*.vercel.app`, `https://*.onrender.com` y `http://localhost:*`.
+
+### 4. Cold Start (Arranque en frío) en el Plan Free de Render
+* **Causa:** El plan gratuito de Render suspende los servicios web tras 15 minutos de inactividad para ahorrar recursos.
+* **Solución:** La primera petición puede tardar entre 30 y 50 segundos mientras el contenedor se reactiva. Una vez despierto, la respuesta es inmediata.
+
+### 5. Control de Stock Concurrente y Validación de Cantidades
+* **Causa:** Posibilidad de que un usuario intente comprar un artículo agotado o una cantidad superior al inventario disponible.
+* **Solución:** Implementación de la excepción `StockInsuficienteException` en el Backend con retorno de código `HTTP 409 Conflict`, sincronizada con bloqueo visual del botón en Frontend y badge "Sin Stock".
+
+### 6. Warnings de Tipos Nulos en Spring Boot (`Null Type Safety`)
+* **Causa:** Advertencias del compilador de Java 21 sobre posibles referencias nulas en repositorios y configuraciones de Spring.
+* **Solución:** Uso explícito de la anotación `@SuppressWarnings("null")` en controladores, servicios y clases de configuración.
 
 ---
 
@@ -186,43 +234,46 @@ Al iniciar el backend por primera vez, el sistema creará de forma automática e
 ecommerce-gamer/
 │
 ├── docker-compose.yml                    # Orquestación de contenedores Docker
+├── Guia_Docker_Ecommerce_Gamer_UTN.pdf   # Guía técnica de Docker y Docker Compose
+├── Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf  # Informe comparativo de despliegues
 │
 ├── backend/                              # Servidor Spring Boot (Java 21)
-│   ├── Dockerfile                        # Multi-stage build (Maven + JRE 21 Alpine)
-│   ├── .dockerignore                     # Filtro de archivos para el build Docker
-│   ├── pom.xml                           # Dependencias Maven y configuración
+│   ├── Dockerfile                        # Multi-stage build (Maven 3.9 + JRE 21 Alpine)
+│   ├── .dockerignore                     # Exclusiones para build de Docker
+│   ├── pom.xml                           # Dependencias Maven y plugins
 │   ├── src/main/java/com/entregaFinal/gestion/
 │   │   ├── controller/                   # Endpoints REST (Auth, Pedidos, Productos)
-│   │   ├── model/                        # Entidades de MongoDB (Documentos)
-│   │   ├── repository/                   # Interfaces de acceso a datos (Spring Data)
+│   │   ├── model/                        # Entidades y documentos de MongoDB
+│   │   ├── repository/                   # Interfaces Spring Data MongoDB
 │   │   ├── service/                      # Lógica de negocio (Gestión de stock, validaciones)
-│   │   ├── config/                       # Configuración y semillado inicial (CORS dinámico, DataInitializer)
+│   │   ├── exception/                    # Manejo de excepciones (StockInsuficienteException)
+│   │   ├── config/                       # Configuración (CORS dinámico, DataInitializer)
 │   │   └── PreentregaJavaGestionApplication.java  # Clase principal
 │   └── src/main/resources/
-│       └── application.properties        # Configuración de servidor, variables de entorno y Atlas
+│       └── application.properties        # Variables de entorno y conexión a Atlas
 │
 ├── frontend/                             # Cliente React (SPA con Vite)
 │   ├── Dockerfile                        # Multi-stage build (Node 20 + Nginx Alpine)
-│   ├── nginx.conf                        # Servidor Nginx con soporte de rutas SPA
-│   ├── .dockerignore                     # Filtro de archivos para el build Docker
+│   ├── nginx.conf                        # Configuración de Nginx para SPA
+│   ├── .dockerignore                     # Exclusiones para build de Docker
 │   ├── src/
-│   │   ├── components/                   # Componentes reutilizables de UI (Navbar, Footer, Modales, etc.)
-│   │   ├── views/                        # Vistas y pantallas completas (Inicio, Carrito, Gestión, etc.)
-│   │   ├── context/                      # Contexto global y temas (ThemeContext, NotificationContext)
-│   │   ├── config/                       # Configuración centralizada de API (api.js)
-│   │   ├── utils/                        # Generador de Facturas en PDF
+│   │   ├── components/                   # Componentes modulares (Navbar, Footer, Modales)
+│   │   ├── views/                        # Páginas completas (Inicio, Carrito, Gestión, etc.)
+│   │   ├── context/                      # Contextos globales (ThemeContext, NotificationContext)
+│   │   ├── config/                       # Configuración de API desacoplada (api.js)
+│   │   ├── utils/                        # Generador de Facturas en PDF (jsPDF)
 │   │   ├── setupTests.js                 # Configuración de Vitest para JSDOM
-│   │   └── App.jsx                       # Configuración de Router y Rutas
-│   ├── public/                           # Assets estáticos
-│   └── package.json                      # Scripts, dependencias de Node y Vitest
+│   │   └── App.jsx                       # Configuración de rutas SPA
+│   ├── public/                           # Assets estáticos y favicon
+│   └── package.json                      # Scripts y dependencias
 │
-├── lanzarProyecto.vbs                    # Lanzador invisible para Windows
+├── lanzarProyecto.vbs                    # Lanzador para Windows (sin consolas visibles)
 ├── start_proyecto.bat                    # Script batch de arranque ordenado
-└── README.md                             # Documentación del proyecto
+└── README.md                             # Documentación principal del proyecto
 ```
 
 ---
 
 ## 📈 Historial de Cambios (Changelog)
 
-El registro detallado de las versiones, cambios aplicados y el roadmap de desarrollo continuo se encuentra documentado por separado en el archivo [changelog.md](changelog.md).
+El registro cronológico de las versiones, mejoras de arquitectura y nuevas funcionalidades se encuentra detallado en el archivo [changelog.md](changelog.md).
