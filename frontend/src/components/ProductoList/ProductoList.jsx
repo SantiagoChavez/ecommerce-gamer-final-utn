@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductoList.css";
 import { useNotification } from "../../context/NotificationContext";
+import { API_URL } from "../../config/api";
 
 function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
   const [productos, setProductos] = useState([]);
@@ -16,7 +17,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
   const [productoDetalle, setProductoDetalle] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/productos")
+    fetch(`${API_URL}/productos`)
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
         if (Array.isArray(data)) setProductos(data);
@@ -49,7 +50,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
   
   const handleEliminar = (id) => {
       if(window.confirm("¿Eliminar?")) {
-          fetch(`http://localhost:8080/api/productos/${id}`, {method:"DELETE"})
+          fetch(`${API_URL}/productos/${id}`, {method:"DELETE"})
           .then(() => { setProductos(prev => prev.filter(p=>p.id!==id)); mostrarNotificacion("🗑️ Eliminado"); });
       }
   };
@@ -63,7 +64,7 @@ function ProductoList({ agregarAlCarrito, esAdmin, busqueda }) {
   // GUARDAR
   const guardarCambios = (idProducto) => {
     const payload = { ...datosEditados, precio: parseFloat(datosEditados.precio), stock: parseInt(datosEditados.stock) };
-    fetch(`http://localhost:8080/api/productos/${idProducto}`, {
+    fetch(`${API_URL}/productos/${idProducto}`, {
       method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
     }).then(res => res.json()).then(act => {
         setProductos(prev => prev.map(p => (p.id === idProducto ? act : p)));

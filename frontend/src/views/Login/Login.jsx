@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // 1. IMPORTAMOS EL HOOK
 import { useNotification } from '../../context/NotificationContext';
+import { API_URL } from '../../config/api';
 
 function Login({ onLogin }) {
   // 2. USAMOS EL HOOK
@@ -18,8 +19,8 @@ function Login({ onLogin }) {
     setError('');
 
     const url = esRegistro 
-      ? 'http://localhost:8080/api/auth/registro' 
-      : 'http://localhost:8080/api/auth/login';
+      ? `${API_URL}/auth/registro` 
+      : `${API_URL}/auth/login`;
 
     const payload = { username, password };
     if(esRegistro) payload.rol = 'USER';

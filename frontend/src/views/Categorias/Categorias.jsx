@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTags, FaArrowRight } from 'react-icons/fa'; // ✅ Importación corregida (FaTags)
+import { API_URL } from '../../config/api';
 import './Categorias.css';
 
 const Categorias = () => {
@@ -8,7 +9,7 @@ const Categorias = () => {
 
   useEffect(() => {
     // Obtenemos los productos para extraer sus categorías únicas
-    fetch('http://localhost:8080/api/productos')
+    fetch(`${API_URL}/productos`)
       .then(res => res.json())
       .then(data => {
         // Extraemos las categorías únicas usando Set

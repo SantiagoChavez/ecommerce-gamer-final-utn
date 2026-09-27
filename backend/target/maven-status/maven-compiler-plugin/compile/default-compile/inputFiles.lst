@@ -1,3 +1,4 @@
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\config\DataInitializer.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\PedidoRepository.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\service\PedidoService.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\UsuarioRepository.java
@@ -7,10 +8,9 @@ C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\c
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\Pedido.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\service\ProductoService.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\controller\AuthController.java
-C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\DataInitializer.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\controller\PedidoController.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\LineaPedido.java
+C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\config\WebConfig.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\controller\ProductoController.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\model\Usuario.java
 C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\repository\ProductoRepository.java
-C:\Users\Santiago\Proyectos integradores\ecommerce gamer\backend\src\main\java\com\entregaFinal\gestion\WebConfig.java

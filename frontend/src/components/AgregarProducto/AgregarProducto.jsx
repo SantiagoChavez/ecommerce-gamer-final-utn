@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../../config/api';
 // El CSS se carga globalmente o desde Admin.css importado en App
 
 function AgregarProducto() {
@@ -27,7 +28,7 @@ function AgregarProducto() {
         stock: parseInt(nuevoProducto.stock)
     };
 
-    fetch('http://localhost:8080/api/productos', {
+    fetch(`${API_URL}/productos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(productoAEnviar)

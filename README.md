@@ -24,7 +24,7 @@ Este software fue desarrollado y presentado como el **Trabajo Integrador Final**
 ## 🛠️ Tecnologías Utilizadas
 
 ### Backend (API REST)
-* ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) **Java 17+**: Lenguaje de programación base.
+* ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) **Java 17/21**: Lenguaje de programación base.
 * ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring&logoColor=white) **Spring Boot 3.x**: Framework principal para el backend y API REST.
 * ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **Spring Data MongoDB**: Mapeo y persistencia de datos NoSQL.
 * ![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB Atlas**: Base de datos NoSQL alojada en la nube.
@@ -36,6 +36,12 @@ Este software fue desarrollado y presentado como el **Trabajo Integrador Final**
 * ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) **React Router v6**: Enrutamiento dinámico SPA y rutas protegidas.
 * ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3 Moderno**: Estilos personalizados, diseño "Dark Neon", glassmorphism y micro-animaciones.
 * 📄 **jsPDF & AutoTable**: Generación dinámica y descarga de comprobantes en PDF.
+* 🧪 **Vitest & React Testing Library**: Suite de 13 pruebas unitarias y de integración frontend.
+
+### DevOps & Contenedores
+* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker**: Contenedorización multi-stage (`Maven + JRE 21` para el Backend y `Node.js + Nginx Alpine` para el Frontend).
+* ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Compose**: Orquestación y levantamiento de todo el stack fullstack en un solo comando.
+* ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) **Nginx**: Servidor web de producción de alto rendimiento con soporte de enrutamiento SPA y compresión.
 
 ---
 
@@ -102,19 +108,36 @@ A continuación se presentan las principales pantallas, módulos de administraci
 
 ## 🚀 Instalación y Ejecución
 
-### Requisitos Previos
-* **Java JDK 17** o superior instalado y configurado en las variables de entorno.
-* **Node.js (LTS)** instalado.
-* Conexión a Internet (para conectar a la base de datos de MongoDB Atlas en la nube).
+El proyecto puede ser ejecutado de 3 formas distintas según tu entorno y preferencia:
 
-### Método de Arranque Rápido (Recomendado para Windows)
-El proyecto incluye scripts preparados para levantar automáticamente tanto la base de datos, el backend como el frontend con un solo clic:
+### Opción A: 🐳 Arranque con Docker Compose (Multiplataforma - Recomendado)
+Si tienes instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/), puedes levantar todo el stack (Backend + Frontend Nginx + Conexión a MongoDB Atlas) con **un solo comando** sin necesidad de instalar Java, Maven ni Node.js en tu sistema operativo:
 
-1. Haz doble clic sobre el archivo [`lanzarProyecto.vbs`](file:///c:/Users/Santiago/Proyectos%20integradores/ecommerce%20gamer/lanzarProyecto.vbs).
+1. Clona el repositorio y abre una terminal en la raíz del proyecto:
+   ```bash
+   docker compose up --build
+   ```
+2. Una vez completado el inicio, abre tu navegador en:
+   * **Frontend:** [http://localhost:5176](http://localhost:5176)
+   * **Backend API:** [http://localhost:8080/api/productos](http://localhost:8080/api/productos)
+
+Para detener los contenedores en cualquier momento:
+```bash
+docker compose down
+```
+
+---
+
+### Opción B: ⚡ Arranque Rápido con Script (Nativo en Windows)
+Si estás en Windows y tienes Java 17+ y Node.js instalados:
+
+1. Haz doble clic sobre el archivo [`lanzarProyecto.vbs`](lanzarProyecto.vbs).
 2. Se abrirá un cuadro de diálogo informando el arranque y, tras unos segundos, se abrirá automáticamente tu navegador en `http://localhost:5176` con la aplicación lista para usar.
-3. *Alternativamente*, puedes ejecutar el archivo [`start_proyecto.bat`](file:///c:/Users/Santiago/Proyectos%20integradores/ecommerce%20gamer/start_proyecto.bat) en una consola.
+3. *Alternativamente*, puedes ejecutar el archivo [`start_proyecto.bat`](start_proyecto.bat) en una consola.
 
-### Método Manual (Paso a Paso)
+---
+
+### Opción C: 🛠️ Método Manual (Paso a Paso)
 
 #### Paso 1: Configurar y arrancar el Backend
 1. Abre una terminal en la carpeta `/backend`.
@@ -162,22 +185,31 @@ Al iniciar el backend por primera vez, el sistema creará de forma automática e
 ```text
 ecommerce-gamer/
 │
-├── backend/                              # Servidor Spring Boot
+├── docker-compose.yml                    # Orquestación de contenedores Docker
+│
+├── backend/                              # Servidor Spring Boot (Java 21)
+│   ├── Dockerfile                        # Multi-stage build (Maven + JRE 21 Alpine)
+│   ├── .dockerignore                     # Filtro de archivos para el build Docker
+│   ├── pom.xml                           # Dependencias Maven y configuración
 │   ├── src/main/java/com/entregaFinal/gestion/
-│   │   ├── controller/                   # Endpoints (Auth, Pedidos, Productos)
+│   │   ├── controller/                   # Endpoints REST (Auth, Pedidos, Productos)
 │   │   ├── model/                        # Entidades de MongoDB (Documentos)
 │   │   ├── repository/                   # Interfaces de acceso a datos (Spring Data)
 │   │   ├── service/                      # Lógica de negocio (Gestión de stock, validaciones)
-│   │   ├── config/                       # Configuración y semillado inicial (CORS, DataInitializer)
+│   │   ├── config/                       # Configuración y semillado inicial (CORS dinámico, DataInitializer)
 │   │   └── PreentregaJavaGestionApplication.java  # Clase principal
 │   └── src/main/resources/
-│       └── application.properties        # Configuración del servidor y base de datos Atlas
+│       └── application.properties        # Configuración de servidor, variables de entorno y Atlas
 │
-├── frontend/                             # Cliente React (SPA)
+├── frontend/                             # Cliente React (SPA con Vite)
+│   ├── Dockerfile                        # Multi-stage build (Node 20 + Nginx Alpine)
+│   ├── nginx.conf                        # Servidor Nginx con soporte de rutas SPA
+│   ├── .dockerignore                     # Filtro de archivos para el build Docker
 │   ├── src/
-│   │   ├── components/                   # Componentes reutilizables de UI (Navbar, Footer, etc.)
-│   │   ├── views/                        # Vistas y páginas de pantalla completa (Inicio, Carrito, etc.)
-│   │   ├── context/                      # Contexto global y de temas (ThemeContext, NotificationContext)
+│   │   ├── components/                   # Componentes reutilizables de UI (Navbar, Footer, Modales, etc.)
+│   │   ├── views/                        # Vistas y pantallas completas (Inicio, Carrito, Gestión, etc.)
+│   │   ├── context/                      # Contexto global y temas (ThemeContext, NotificationContext)
+│   │   ├── config/                       # Configuración centralizada de API (api.js)
 │   │   ├── utils/                        # Generador de Facturas en PDF
 │   │   ├── setupTests.js                 # Configuración de Vitest para JSDOM
 │   │   └── App.jsx                       # Configuración de Router y Rutas
