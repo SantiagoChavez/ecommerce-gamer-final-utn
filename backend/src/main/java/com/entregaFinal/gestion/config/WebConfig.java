@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SuppressWarnings("null")
 public class WebConfig {
 
-    @Value("${cors.allowed-origins:http://localhost:5176,http://127.0.0.1:5176,http://localhost:3000,http://localhost:80}")
+    @Value("${cors.allowed-origins:http://localhost:5176,http://127.0.0.1:5176,http://localhost:3000,http://localhost:80,https://*.vercel.app,https://*.onrender.com,*}")
     private String allowedOrigins;
 
     @Bean
