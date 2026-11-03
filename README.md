@@ -45,27 +45,31 @@ La aplicación se encuentra 100% desplegada y operativa en la nube para acceso p
 
 ## 🛠️ Tecnologías Utilizadas
 
-### Backend (API REST)
-* ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white) **Java 17/21**: Lenguaje de programación base.
-* ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring&logoColor=white) **Spring Boot 3.x**: Framework principal para backend y arquitectura REST.
-* ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **Spring Data MongoDB**: Mapeo y persistencia de documentos NoSQL.
-* ![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB Atlas**: Cluster NoSQL distribuido y persistente en la nube.
-* ![Apache Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white) **Maven**: Gestión de dependencias, testing y ciclo de vida de compilación.
+### Backend (API RESTful)
+* ![Java](https://img.shields.io/badge/Java_21-ED8B00?style=flat-square&logo=openjdk&logoColor=white) **Java 21 (LTS)**: Lenguaje base utilizando características modernas y tipado seguro.
+* ![Spring Boot](https://img.shields.io/badge/Spring_Boot_3.2.5-6DB33F?style=flat-square&logo=spring&logoColor=white) **Spring Boot 3.2.5**: Framework principal para controladores REST, inyección de dependencias y lógica de negocio.
+* ![Spring Data MongoDB](https://img.shields.io/badge/Spring_Data_MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) **Spring Data MongoDB**: Abstracción y operaciones CRUD reactivas sobre documentos NoSQL.
+* ![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) **MongoDB Atlas**: Base de datos NoSQL distribuida y persistente en la nube.
+* ![Apache Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white) **Apache Maven**: Automatización de compilación, empaquetado JAR y gestión de dependencias.
+* ⚡ **Spring Boot DevTools & Test**: Recarga rápida en desarrollo local y suite de tests de integración backend.
 
-### Frontend (SPA)
-* ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) **React 18**: Librería declarativa para interfaces de usuario reactivas.
-* ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite**: Servidor de desarrollo ultrarrápido y empaquetador para producción.
-* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) **React Router v6**: Enrutamiento dinámico SPA y rutas protegidas por roles.
-* ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3 Moderno**: Estética "Dark Neon", modo claro, diseño responsivo y micro-animaciones.
-* 📄 **jsPDF & AutoTable**: Generación dinámica y descarga instantánea de comprobantes de facturación en PDF.
-* 🧪 **Vitest & React Testing Library**: Suite de 13 pruebas unitarias y de integración frontend.
+### Frontend (SPA & UI Reactiva)
+* ![React](https://img.shields.io/badge/React_18.3-20232A?style=flat-square&logo=react&logoColor=61DAFB) **React 18.3**: Librería declarativa para interfaces reactivas, hooks de estado y arquitectura modular.
+* ![Vite](https://img.shields.io/badge/Vite_5-646CFF?style=flat-square&logo=vite&logoColor=white) **Vite 5**: Servidor de desarrollo ultrarrápido (HMR) y empaquetador para producción con Rollup.
+* ![React Router](https://img.shields.io/badge/React_Router_v6-CA4245?style=flat-square&logo=react-router&logoColor=white) **React Router v6**: Enrutamiento del lado del cliente, rutas protegidas por roles (`RutaPrivadaAdmin`) y soporte de future flags.
+* 🌐 **Fetch API & Cliente Centralizado**: Módulo desacoplado (`api.js`) preparado para variables de entorno (`VITE_API_URL`).
+* 🔄 **React Context API**: Manejo de estado global reactivo mediante `ThemeContext` (Dual Theme: Dark Neon / Light Mode) y `NotificationContext` (sistema de toasts flotantes no bloqueantes).
+* ![React Icons](https://img.shields.io/badge/React_Icons-E91E63?style=flat-square&logo=react&logoColor=white) **React Icons**: Iconografía SVG moderna integrada en menús, acciones, drawer y filtros de categoría.
+* ![CSS3](https://img.shields.io/badge/CSS3_Moderno-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3 Avanzado**: Estética "Dark Neon", variables CSS dinámicas para modo claro/oscuro, micro-animaciones y diseño responsivo.
+* 📄 **jsPDF & AutoTable**: Generación dinámica y descarga instantánea de comprobantes de facturación fiscal en PDF.
+* 🧪 **Vitest, React Testing Library & JSDOM**: Suite de 13 pruebas unitarias y de integración frontend ejecutadas sobre entorno virtual de DOM.
 
-### DevOps, Contenedores e Infraestructura
-* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Multi-Stage**: Contenedores optimizados (`Maven 3.9 + JRE 21 Alpine` para Backend y `Node 20 + Nginx Alpine` para Frontend).
-* ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Compose**: Orquestación local y levantamiento sincronizado de todo el stack.
-* ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) **Nginx**: Servidor web HTTP con soporte de enrutamiento SPA (`try_files`) y compresión.
-* ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white) **Vercel Edge Network**: Alojamiento del Frontend con CI/CD automático.
-* ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black) **Render Cloud**: Despliegue del contenedor Docker del Backend.
+### DevOps, Contenedores e Infraestructura Cloud
+* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Multi-Stage**: Contenedores optimizados (`Maven 3.9 + JRE 21 Alpine` para Backend con usuario no-root `appuser`, y `Node 20 + Nginx Alpine` para Frontend).
+* ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker Compose**: Orquestación local y levantamiento sincronizado de todo el stack en un solo comando.
+* ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white) **Nginx Alpine**: Servidor web HTTP en producción con soporte de enrutamiento SPA (`try_files`) y compresión.
+* ![Vercel](https://img.shields.io/badge/Vercel_Edge-000000?style=flat-square&logo=vercel&logoColor=white) **Vercel Edge Network**: Alojamiento del Frontend con CI/CD automático conectado al repositorio.
+* ![Render](https://img.shields.io/badge/Render_Cloud-46E3B7?style=flat-square&logo=render&logoColor=black) **Render Cloud**: Despliegue del contenedor Docker del Backend con vinculación a variables de entorno.
 
 ---
 
@@ -127,6 +131,42 @@ A continuación se presentan las principales pantallas, módulos de administraci
 - **Conmutación Dinámica (Theme Toggle):** Switch accesible desde el Navbar y desde el menú lateral para alternar al instante entre Modo Oscuro y Modo Claro.
 - **Adaptación Visual Limpia:** Paleta cromática optimizada para entornos luminosos con fondos claros, manteniendo el contraste y la jerarquía de lectura.
 - **Persistencia de Preferencia:** La elección del tema se preserva de manera global y reactiva a través del `ThemeContext`.
+
+---
+
+### 8. ℹ️ Otras Vistas y Módulos de la Aplicación
+* **Página Académica "Acerca de" (`/acerca-de`):** Ficha institucional formal detallando el contexto del Trabajo Integrador de la UTN Avellaneda, perfil profesional del desarrollador y especificaciones de arquitectura.
+* **Explorador Dinámico por Categorías (`/categorias`):** Módulo de navegación segmentada que agrupa periféricos y componentes (Mouses, Teclados, Monitores, Placas de Video, Auriculares) para filtrar el catálogo en un clic.
+* **Historial de Pedidos para Clientes (`/pedidos`):** Espacio donde el usuario regular consulta en tiempo real sus órdenes emitidas, estados de envío y vuelve a descargar sus comprobantes fiscales en PDF.
+
+---
+
+## 🔌 Arquitectura de la API REST (Endpoints)
+
+La API RESTful desarrollada con Spring Boot expone recursos estructurados bajo el prefijo `/api`, asegurando validaciones de entrada, control de concurrencia y respuestas con códigos de estado HTTP estándar:
+
+### 🔐 Autenticación (`/api/auth`)
+| Método | Endpoint | Descripción | Acceso |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/login` | Valida credenciales (`username` y `password`) y retorna el perfil con su rol asignado | Público |
+| `POST` | `/api/auth/registro` | Registra nuevos usuarios en MongoDB Atlas inicializados con rol de cliente (`USER`) | Público |
+
+### 📦 Catálogo e Inventario de Productos (`/api/productos`)
+| Método | Endpoint | Descripción | Acceso |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/productos` | Retorna el listado completo de productos con datos de stock y precios | Público |
+| `GET` | `/api/productos/{id}` | Retorna los detalles de un producto específico mediante su ID | Público |
+| `POST` | `/api/productos` | Da de alta un nuevo producto con validación de campos obligatorios | Solo Administrador |
+| `PUT` | `/api/productos/{id}` | Actualiza atributos, precio, imagen o stock disponible de un artículo | Solo Administrador |
+| `DELETE` | `/api/productos/{id}` | Elimina de forma definitiva un producto de la base de datos | Solo Administrador |
+
+### 🛒 Pedidos, Ventas y Facturación (`/api/pedidos`)
+| Método | Endpoint | Descripción | Acceso |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/pedidos` | Obtiene la lista de órdenes registradas (filtrable según el rol de sesión) | Autenticado |
+| `POST` | `/api/pedidos` | Registra una nueva compra, valida stock y descuenta unidades de inventario | Cliente / Admin |
+| `PUT` | `/api/pedidos/{id}/estado` | Actualiza el estado logístico de una orden (`PENDIENTE` ➔ `FACTURADO`) | Solo Administrador |
+| `DELETE` | `/api/pedidos/{id}` | Anula o elimina un pedido del registro del sistema | Solo Administrador |
 
 ---
 
@@ -236,34 +276,37 @@ ecommerce-gamer/
 ├── docker-compose.yml                    # Orquestación de contenedores Docker
 ├── Guia_Docker_Ecommerce_Gamer_UTN.pdf   # Guía técnica de Docker y Docker Compose
 ├── Informe_Arquitectura_Docker_vs_JobFlow_UTN.pdf  # Informe comparativo de despliegues
+├── generate_pdf_guide.js                 # Script generador de documentación técnica en PDF
+├── changelog.md                          # Historial cronológico de versiones y cambios
 │
-├── backend/                              # Servidor Spring Boot (Java 21)
-│   ├── Dockerfile                        # Multi-stage build (Maven 3.9 + JRE 21 Alpine)
+├── backend/                              # Servidor Spring Boot (Java 21 LTS)
+│   ├── Dockerfile                        # Multi-stage build (Maven 3.9 + JRE 21 Alpine con usuario no-root)
 │   ├── .dockerignore                     # Exclusiones para build de Docker
-│   ├── pom.xml                           # Dependencias Maven y plugins
+│   ├── pom.xml                           # Dependencias Maven (Spring Web, Data MongoDB, DevTools, Test)
 │   ├── src/main/java/com/entregaFinal/gestion/
-│   │   ├── controller/                   # Endpoints REST (Auth, Pedidos, Productos)
-│   │   ├── model/                        # Entidades y documentos de MongoDB
-│   │   ├── repository/                   # Interfaces Spring Data MongoDB
-│   │   ├── service/                      # Lógica de negocio (Gestión de stock, validaciones)
+│   │   ├── controller/                   # Endpoints REST (AuthController, PedidoController, ProductoController)
+│   │   ├── model/                        # Entidades y documentos NoSQL (Usuario, Producto, Pedido, LineaPedido)
+│   │   ├── repository/                   # Repositorios Spring Data MongoDB
+│   │   ├── service/                      # Lógica de negocio (Validaciones, control de stock concurrente)
 │   │   ├── exception/                    # Manejo de excepciones (StockInsuficienteException)
-│   │   ├── config/                       # Configuración (CORS dinámico, DataInitializer)
-│   │   └── PreentregaJavaGestionApplication.java  # Clase principal
+│   │   ├── config/                       # Configuración (WebConfig con CORS dinámico, DataInitializer)
+│   │   └── PreentregaJavaGestionApplication.java  # Clase principal de Spring Boot
 │   └── src/main/resources/
 │       └── application.properties        # Variables de entorno y conexión a Atlas
 │
-├── frontend/                             # Cliente React (SPA con Vite)
+├── frontend/                             # Cliente React 18 (SPA con Vite)
 │   ├── Dockerfile                        # Multi-stage build (Node 20 + Nginx Alpine)
-│   ├── nginx.conf                        # Configuración de Nginx para SPA
+│   ├── nginx.conf                        # Configuración de Nginx para SPA (soporte try_files)
 │   ├── .dockerignore                     # Exclusiones para build de Docker
 │   ├── src/
-│   │   ├── components/                   # Componentes modulares (Navbar, Footer, Modales)
-│   │   ├── views/                        # Páginas completas (Inicio, Carrito, Gestión, etc.)
-│   │   ├── context/                      # Contextos globales (ThemeContext, NotificationContext)
-│   │   ├── config/                       # Configuración de API desacoplada (api.js)
-│   │   ├── utils/                        # Generador de Facturas en PDF (jsPDF)
-│   │   ├── setupTests.js                 # Configuración de Vitest para JSDOM
-│   │   └── App.jsx                       # Configuración de rutas SPA
+│   │   ├── components/                   # Componentes modulares (Navbar, Footer, ProductoList, AgregarProducto)
+│   │   ├── views/                        # Vistas SPA (Inicio, AcercaDe, Categorias, Carrito, Pedidos, Login, Admin)
+│   │   ├── context/                      # Contextos globales (ThemeContext dual-theme, NotificationContext toasts)
+│   │   ├── config/                       # Configuración de API desacoplada (api.js con VITE_API_URL)
+│   │   ├── utils/                        # Generador de Facturas fiscales en PDF (jsPDF + AutoTable)
+│   │   ├── setupTests.js                 # Configuración de Vitest para entorno JSDOM
+│   │   ├── App.jsx                       # Configuración de rutas SPA protegidas y providers
+│   │   └── main.jsx                      # Punto de entrada y renderizado React
 │   ├── public/                           # Assets estáticos y favicon
 │   └── package.json                      # Scripts y dependencias
 │
